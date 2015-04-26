@@ -1,0 +1,45 @@
+I'm making template changes - ie the banner in on interior pages.
+
+> The Tags pages for tags with parens in the name — Reel Faith Reviews
+> (Video), Reviews in Verse (Video) and Reviews in Verse (Written) —
+> don't seem to be available. I think it might be because they have
+> parens in the names. Dunno if these can be canceled out or if I just
+> can't have parens any more. Not a huge thing either way.
+
+It *was* the parens - and other punctuation like "&". Ugly - but allowed again.
+
+> Review pages aren't displaying years with H1 title.
+
+Fixed on both summaries and detail pages.
+
+> If I enter something into the Byline field, it replaces not only my
+> name but the credit-author tags as well. (Per the new templates, the
+> default name will be SDG, not Steven D. Greydanus.)
+
+Fixed both.
+
+> Single match search result isn't defaulting to article.
+
+Fixed
+
+> Inline images, like the photo of Scott Derrickson in this piece,
+> should float right (mockup example) with Entry (Above the fold)
+> content wrapping left. (Lead content should be ABOVE both, so an
+> inline image is treated the same as the ratings table in a review.)
+
+Fixed.
+
+> <title> tag isn't displaying article title.
+
+Fixed - many places.
+
+> Home page / recent pages are displaying too many links. Instead of
+> 50, let's try 20 per page.
+
+I already tackled this - index has 10/page, 20 elsewhere.
+
+> Featured article is working fine — but a "featured" article should
+> not also appear in the home page / recent feed. Should not appear
+> twice!
+
+Fixed.

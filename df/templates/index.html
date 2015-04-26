@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body_class %}home archive has-masthead{% endblock %}
+{% block main %}
+
+{% block banner %}{% endblock %}
+
+<div class="article-masthead"></div>
+<article-content>
+    {% if not objects.has_previous %}
+        <all-summaries class="featured">
+        {% for object in featured %}
+          {% include "article/summary.html" %}
+        {% endfor %}
+        </all-summaries>
+    {% endif %}    
+    <all-summaries>
+    {% for object in objects %}
+      {% include "article/summary.html" %}
+    {% endfor %}
+    </all-summaries>
+</article-content>
+{% with objects as records %}
+ {% include "pagination.html" %}
+{% endwith %}
+
+{% endblock %}

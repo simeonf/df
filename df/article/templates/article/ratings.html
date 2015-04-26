@@ -1,0 +1,36 @@
+<div class="artistic rating">
+    <h4>Artistic/Entertainment Value</h4>
+      {% for star in article.stars_list %}
+         {% if star == 'whole' %}
+           <i class="fa fa-star"></i>
+         {% endif %}
+         {% if star == 'half' %}
+           <i class="fa fa-star-half-o"></i>
+         {% endif %}
+         {% if star == 0 %}
+           <i class="fa fa-star-o"></i>
+         {% endif %}
+      {% empty %}
+        <i class="fa fa-bomb"></i>
+      {% endfor %}
+</div>
+<div class="moral rating">
+    {% load sdg %}
+    <h4>Moral/Spiritual Value</h4>
+      {{ article.moral_rating }}
+</div>
+<div class="age rating">
+    <h4>Age Appropriateness</h4>
+    {{ article.age_display|safe }}
+</div>
+<div class="mpaa rating">
+    <h4>MPAA Rating</h4>
+    {{ article.mpaa }}
+</div>
+<div class="caveat">
+    <h4>Caveat Spectator</h4>
+    {{ article.objections }}
+</div>
+<div class="about">
+    <a href="/about/ratings"><i class="fa fa-question-circle"></i> <span>About These Ratings</span></a>
+</div>

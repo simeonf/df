@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load sdg %}
+
+{% block body_class %}review {% if article.masthead %} has-masthead {% endif %}{% if article.continue_reading and article.category == 'REVIEW' %} continue-reading {% endif %}{% endblock %}
+{% block main %}
+{% if article.masthead %}
+<div class="article-masthead" style="background-image: url('{{ MEDIA_URL }}{{ article.masthead }}');"></div>
+{% endif %}
+
+<article-content>
+    <div class="article-sharing">
+        <a href="http://twitter.com/share" class="twitter" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://decentfilms.com{{ request.path }}" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    </div>
+
+    <h1>{{ article.title|safe }}{% if article.year %} ({{ article.year }}){% endif %}{% if user.is_authenticated %} <a href="{{ article.get_admin_url }}">Edit</a>{% endif %}</h1>
+
+    <!-- Article subtitle, if any - not present in reviews -->
+    {% if article.category != 'REVIEW'  and article.subtitle %}
+    <h2>{{ article.subtitle|safe }}</h2>
+    {% endif %}
+
+    {% if article.category == 'REVIEW' %}
+    <article-rating>
+        {{ article.overall }}
+    </article-rating>
+    {% endif %}
+    
+    {% if article.notebox %}
+    <meta-note>
+        {{ article.notebox|safe }}
+    </meta-note>
+    {% endif %}
+
+    <credit-details>
+        <credit-author>{{ article.byline|default:"SDG" }}</credit-author>
+        {% if article.source %}
+        <credit-source>Original source: <nobr>
+            <em><a href="{{ article.source.url }}">{{ article.source.text|safe }}</a></em>
+          </nobr>
+        </credit-source>
+        {% endif %}
+    </credit-details>
+    <!-- BEGIN review sidebar; reviews only -->
+    {% if article.lead_content %}
+       <content-lead>
+        {{ article.lead_content|safe }}
+       </content-lead>
+    {% endif %}
+    <!-- BEGIN inline image; optionally available for any article type EXCEPT review -->
+    {% with article.image_set.all as images %}
+    {% if images %}
+    <inline-image>
+        {% for image in images %}
+            <img src="{{ image.image }}" {{ image.attributes }}>
+        {% endfor %}				
+	</inline-image>
+    {% endif %}
+    {% endwith %}
+    <!-- END article inline image -->
+    {% if article.category == 'REVIEW' %}
+    <review-sidebar>
+        <div class="continues">
+            <a href="#continued">Continues below <i class="fa fa-fw fa-chevron-down" style="font-size: .8em;"></i></a>
+        </div>
+        {% if article.amazon %}
+        <!-- BEGIN Amazon link - single link field -->
+        <div class="amazon">
+            <a href="{{ article.amazon }}"><img width="220" height="37" alt="Buy at Amazon.com" src="/static/_theme/img/amazon.png"></a>
+        </div>
+        <!-- END Amazon link -->
+        {% endif %}
+        {% if article.cast %}
+        <div class="filmmakers">
+          {{ article.cast|safe }}
+        </div>
+        {% endif %}
+        {% include "article/ratings.html" %}
+    </review-sidebar>
+    {% endif %}
+    <a name="continued"></a>
+    <content-above-fold>
+     {{ article.entry|safe }}
+    </content-above-fold>
+    <!-- BEGIN "continue reading" link -->
+    {% with article.continue_reading as link %}
+    {% if link %}
+    <div class="continue-link">
+      <a href="{{ link.url|safe }}">Continue reading at {{ link.text|safe }} <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+    {% else %}
+        <!-- BEGIN article "below fold" content; hidden when "continue reading is active -->
+        <content-below-fold>
+         {% if article.iframe %}
+           {% if article.iframe|slice:":4" == "http" %}
+             <iframe width="640" height="360" src="{{ article.iframe|safe }}" frameborder="0" allowfullscreen></iframe>
+           {% else %}
+             {{ article.iframe|safe }}
+           {% endif %}
+         {% endif %}
+         {% if article.below_the_fold %}
+           {{ article.below_the_fold|safe }}
+         {% endif %}
+        </content-below-fold>
+      <!-- END article "below fold" content -->
+    {% endif %}
+    {% endwith %}
+    <!-- END "continue reading" link -->
+
+    <!-- Tags and see-also links, if any -->
+    {% if article.related_tags or article.see_also %}
+    <see-also>
+        {% if article.related_tags %}
+        <label>Tags:</label> {% for tag in article.related_tags %}<a href="/tags/{{ tag.title }}">{{ tag.title }}</a>{% if not forloop.last %},{% endif %} {% endfor %}<br>
+        {% endif %}
+        {% if article.see_also %}
+        <ul>
+        <label>See also</label>
+        {{ article.see_also|safe }}
+        </ul>
+        {% endif %}
+    </see-also>
+    {% endif %}
+
+<!-- BEGIN related content -->
+{% get_article_related article as related %}
+{% if related.articles %}
+    <related-content>
+    <h3>Related</h3>
+        <all-summaries>
+          {% for object in related.articles %}
+            {% include "article/summary.html" %}
+          {% endfor %}
+        </all-summaries>
+    </related-content>
+{% endif %}
+
+{% if related.mail %}    
+<h3>Mail</h3>
+<all-mail-items>
+  {% for mail in related.mail %}
+  <mail-item>
+    <h4><a href="{{ mail.related_to.get_absolute_url }}">RE: {% firstof mail.title|safe mail.related_to.title|safe %}</a></h4>
+      <blockquote class="mail">
+        {{ mail.quote|safe }}
+      </blockquote>
+      <a href="{{ mail.get_absolute_url }}">Link to this item</a>
+  </mail-item>
+  {% endfor %}
+</all-mail-items>
+{% endif %}
+{% endblock %}
+

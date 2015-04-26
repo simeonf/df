@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock %}
+{% block body_class %}archive{% endblock %}
+{% block main %}
+<a class="logo-banner" href="/"></a>
+<article-content>
+  <h1>Articles</h1>
+  <all-summaries>
+    {% for object in articles %}
+      {% include "article/summary.html" %}
+    {% endfor %}
+  </all-summaries>
+  
+{% with articles as records %}
+ {% include "pagination.html" %}
+{% endwith %}
+
+
+</article-content>
+{% endblock %}
+
+
+

@@ -1,0 +1,2319 @@
+@charset "UTF-8";
+/**ƒ
+* @desc			Media breakpoints
+* @author		Firespring
+*/
+/**
+* @desc			Apply a natural box layout model to all elements
+* @author		Jason Morehead
+*/
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* normalize.css v3.0.1 | MIT License | http://necolas.github.io/normalize.css/ */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `summary-elements` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+header-wrapper,
+header-content,
+page-nav,
+page-search,
+page-body-wrapper,
+page-content,
+columns-all,
+column-main,
+sidebar-column,
+article-content,
+content-lead,
+content-above-fold,
+content-below-fold,
+all-summaries,
+related-content,
+article-rating,
+review-sidebar,
+meta-note,
+see-also,
+credit-details,
+inline-image,
+page-footer,
+social-links,
+by-ratings,
+see-also,
+all-tags,
+mail-item {
+  display: block; }
+
+nobr,
+credit-source,
+credit-author {
+	display: inline;
+	}
+
+nobr {
+	white-space: nowrap;
+	}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none; }
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent; }
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0; }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold; }
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic; }
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000; }
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0; }
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0; }
+
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto; }
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible; }
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none; }
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal; }
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */ }
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold; }
+
+/**
+* @desc			Helper classes
+* @author		Jason Morehead
+*/
+/* ============================================================================
+No white-space wrap
+============================================================================ */
+.nowrap {
+  white-space: nowrap; }
+
+/* ============================================================================
+Image replacement
+============================================================================ */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden; }
+  .ir:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 150%; }
+
+/* ============================================================================
+Hide from both screenreaders and browsers
+============================================================================ */
+.hidden {
+  display: none !important;
+  visibility: hidden; }
+
+/* ============================================================================
+Hide only visually, but have it available for screenreaders
+============================================================================ */
+.hidden-visually {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+  .hidden-visually.focusable:active,
+  .hidden-visually.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto; }
+
+/* ============================================================================
+Hide visually and from screenreaders, but maintain layout
+============================================================================ */
+.invisible {
+  visibility: hidden; }
+
+/* ============================================================================
+Self-clearing floats
+============================================================================ */
+page-body-wrapper:after, columns-all:after, sidebar-column:after, sidebar-column header:after, header-content:after, /* summary:after, */ .search .browse-title p:after, .search .search-criteria .search-misc:after,
+.clearfix:after {
+  display: table;
+  content: "";
+  clear: both; }
+
+/* ============================================================================
+Misc
+============================================================================ */
+/**
+* @desc			Display classes
+* @author		Jason Morehead
+*/
+/* ============================================================================
+Display Classes
+============================================================================ */
+.display-block {
+  display: block; }
+
+.display-inline-block {
+  display: inline-block; }
+
+.display-none {
+  display: none; }
+
+/**
+* @desc			Helpers for typography
+* @author		Jason Morehead
+*/
+/* ============================================================================
+Styles & Weights
+============================================================================ */
+
+/**
+* @desc			Helpers for floats
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+General floats
+========================================================================== */
+
+column-main, sidebar-column img, header-content page-nav, .article-sharing,
+.float-left {
+  float: left; }
+
+sidebar-column, header-content page-search, inline-image, review-sidebar,
+.float-right {
+  float: right; }
+
+.float-none {
+  float: none; }
+
+/**
+* @desc			Helpers for text alignment
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Block Alignment
+========================================================================== */
+page-body-wrapper, header-content {
+  margin: 0 auto; }
+  
+
+/* ==========================================================================
+Text Alignment
+========================================================================== */
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+article-rating, review-sidebar a.continues,
+.text-center {
+  text-align: center; }
+
+.text-justify {
+  text-align: justify; }
+
+/**
+* @desc			Helpers for forms
+* @author		Jason Morehead
+*/
+.form-row {
+  margin: 0 0 1.33333rem;
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif; }
+
+.form-element {
+	width: 50%; 
+	float: left; 
+	text-align: center; 
+	padding: 1.5em .5em 0 .5em; 
+	}
+
+.form-element label {
+	font-weight: normal; 
+	font-family: "proxima-nova", "Helvetica Neue", sans-serif; 
+	font-size: .9em;
+	text-transform: uppercase;
+	display: block; 
+	width: 100%; }
+
+.form-element div label {
+	display: inline-block;
+	text-align: right; 
+	padding-right: .5em; 
+  font-family: "ff-tisa-web-pro", Georgia, sans-serif;
+	width: 5em;
+	text-transform: none; 
+	}
+
+.by-ratings {
+	float: left;
+	width: 110%;
+	margin-left: -2.25em;
+	}
+
+.by-ratings	.form-element {
+	width: 33.33%; 
+	padding-left: 0;
+	padding-right: 0;
+	}
+
+input.expand,
+select[multiple] {
+  width: 100%; }
+
+.form-footer {
+	margin-top: 1em; 
+	}
+
+input.button {
+	background: #FFF1D5;
+	text-transform: uppercase; 
+	color: #a42b2b;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    border: solid 1px #405d80;
+    border-radius: 50px;
+    padding: 10px 25px;
+	transition: background 0.2s ease; }
+
+sidebar-column input.button {
+	display: block; 
+	margin: 1em auto .5em auto; 
+	}
+
+input.button:hover {
+	color: #fff; 
+	border-color: #FFA860; 
+	background: #FFA860;
+	}
+
+input.button:active {
+	color: #fff; 
+	background: #a42b2b; 
+	border-color: #a42b2b; 
+	}
+
+#mailing-list {
+	background: #fff;
+	padding: 6px; 
+	margin-bottom: 1em; 
+    border-radius: 6px;
+    border: 1px solid #e6e1d9;
+	}
+
+#mc_embed_signup label	{
+	display: block; 
+	font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+	}
+
+#mc_embed_signup .text	{
+	width: 100%;
+	}
+
+
+/**
+* @desc			Set baseline typography, including typographic scale
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Base Settings
+========================================================================== */
+html {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "ff-tisa-web-pro", Georgia, sans-serif; }
+
+body {
+  word-wrap: break-word;
+  text-rendering: optimizeLegibility; }
+
+/**
+ * Typecsset
+ *
+ * Typecsset is a small, unopinionated library for creating beautifully set type
+ * on the web. Typecsset gives perfect vertical rhythm at any configurable font
+ * size, as well as many other typographical niceties.
+ */
+/*------------------------------------*\
+    #SHARED
+\*------------------------------------*/
+/**
+ * A lot of elements in Typecsset need to share some declarations (mainly for
+ * vertical rhythm), so we `@extend` some silent classes.
+ */
+h1, h2, h3, h4, h5, h6, ul, ol, dl, p, label, address, pre, blockquote, table {
+  margin: 0;
+  padding: 0; }
+
+h2, h3, h4, h5, h6, ul, ol, dl, p, address, pre, blockquote, table {
+  margin-bottom: 1.6875rem; }
+
+
+/*------------------------------------*\
+    #BASE
+\*------------------------------------*/
+/**
+ * 1. Set the base element’s `font-size` to the value of your choosing. Set in
+ *    ems, assuming a browser default of 16px.
+ * 2. Work out the unitless `line-height` for your project based around your
+ *    desired `line-height` (defined previously in pixels), and your project’s
+ *    base font size.
+ */
+html {
+  font-size: 1rem;
+  /* [1] */
+  line-height: 1.6875;
+  /* [2] */ }
+
+body {
+  margin: 0; }
+
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+h1 {
+  font-size: 2.95rem;
+  line-height: 1.1440677966; }
+
+h2 {
+  font-size: 1.4375rem;
+  line-height: 1.1739130435;
+  margin:  0 0 1.5rem 0; 
+  color: #999999;
+  font-weight: 500;
+  text-transform: uppercase; 
+  font-size: 1.25rem;
+  line-height: 1.5em;
+   }
+
+h3 {
+  font-size: 1.275rem;
+  line-height: 1.3235294118; }
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  color: #7F6938; }
+
+h5 {
+  font-size: 1rem;
+  line-height: 1.6875; }
+
+h6 {
+  font-size: 1rem;
+  line-height: 1.6875; }
+
+/*------------------------------------*\
+    #LISTS
+\*------------------------------------*/
+ul, ol, dl {
+  margin-left: 3.375rem; }
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  list-style: inherit; }
+
+dt {
+  font-weight: bold; }
+
+dd {
+  margin: 0; }
+
+/*------------------------------------*\
+    #PARAGRAPHS
+\*------------------------------------*/
+/**
+ * Not strictly a paragraph, but probably doesn’t need its own section.
+ */
+/*------------------------------------*\
+    #CODE
+\*------------------------------------*/
+/**
+ * 1. Fix an odd quirk whereby, without this, code blocks are rendered at a
+ *    font-size smaller than 1em.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* [1] */ }
+
+/*------------------------------------*\
+    #QUOTES
+\*------------------------------------*/
+/**
+ * 1. Hang the opening quote of the blockquote.
+ */
+/**
+ * Set up quote marks on quoting elements. This is very English-based, so we are
+ * using “, ”, ‘, and ’ quotes.
+ */
+blockquote {
+  margin-left: 3.375rem; }
+
+q {
+  quotes: "‘" "’" "“" "”";
+  /**
+   * If an element opens with an inline quote, let’s hang that.
+   */ }
+  q:before {
+    content: "‘";
+    content: open-quote; }
+  q:after {
+    content: "’";
+    content: close-quote; }
+  q q:before {
+    content: "“";
+    content: open-quote; }
+  q q:after {
+    content: "”";
+    content: close-quote; }
+  q:first-child {
+    display: inline-block;
+    text-indent: -0.22em; }
+
+/*------------------------------------*\
+    #TABLES
+\*------------------------------------*/
+/**
+ * Crude table styles; tables are very difficult to keep on the baseline.
+ */
+th,
+td {
+  padding: 13.5px; }
+
+/* ============================================================================
+General Styles
+============================================================================ */
+.nowrap {
+  white-space: nowrap; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif; }
+
+h1, h3 {
+  color: #a42b2b; } 
+
+h3 {
+	text-transform: uppercase; 
+	text-align: center; 
+	padding-top: 1em; 
+	letter-spacing: .25em;
+	clear: left; 
+	}
+
+blockquote {
+  position: relative;
+  font-style: italic;
+  padding: 1rem 1rem 1rem 1.5rem;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+  margin: 1.6875rem 0;
+  background: #f2f0ec; /* lightgrey */
+  color: #7F6938; 
+  border-left: 10px solid #7F6938;
+  overflow: auto; }
+  blockquote cite {
+    display: block; }
+  blockquote p {
+    margin: 1.6875rem 0 0; }
+    blockquote p:first-child {
+      margin: 0; }
+
+/* Reverse out double italics */
+
+meta-note i, meta-note em,
+blockquote i, blockquote em,
+blockquote.mail blockquote i, blockquote.mail blockquote em {
+	font-style: normal; 
+	}
+
+blockquote.mail i, blockquote.mail em {
+	font-style: italic; 
+	} 
+
+/**
+* @desc			Generic layout elements
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+General elements
+========================================================================== */
+body {
+  background: #C8AA6F; 
+  padding: 0 0 1.25rem; }
+
+a:link {
+  color: #3C5D84;
+  transition: color 0.2s ease; }
+
+a:visited {
+  color: #7F6938; } /* was 786c45 */
+
+a:hover,
+a:visited:hover {
+  color: #F77000; } /* was FFA860 */
+  
+a:active, a:visited:active {
+	color: #a42b2b;  /* orange? */
+	background: #FFF1D5;
+	}
+
+
+/* ============================================================================
+Responsive media elements
+============================================================================ */
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle; }
+
+object,
+embed {
+  max-width: 100%;
+  height: auto; }
+
+/* ==========================================================================
+Page nav/search
+========================================================================== */
+header-wrapper page-nav { 
+	text-transform: uppercase;
+	margin: 0 auto; }
+      
+      /* taken from first break point SDG */
+      
+      header-wrapper page-nav a:link,
+      header-wrapper page-nav a:visited {
+        height: auto; }
+        
+        header-content {
+        padding: 0;
+        }
+
+  page-footer {
+    text-align: center;
+    line-height: 1.5; }
+    page-footer page-nav {
+      float: none;
+      margin: 0 0 1rem; }
+      page-footer page-nav a:link,
+      page-footer page-nav a:visited {
+        height: auto; } 
+      
+      
+      /* end taken from first break point SDG */
+      
+  page-nav a:link,
+  page-nav a:visited {
+    vertical-align: middle;
+    margin: 0 .5rem; 
+    padding: 0 .3rem; 
+    border: solid 2px; 
+    border-color: #3C5D84;
+    background: #3C5D84; 
+	border-radius: 2px;
+    display: inline-block;
+    height: 1.9375rem;
+    color: #a1b1c5;
+    text-decoration: none;
+    transition: background 0.2s ease; }
+    
+  page-nav a:first-child {
+  	margin-left: 0;
+  }
+    
+	page-nav a:hover,
+	page-nav a:visited:hover,
+	page-nav a.here:hover,
+	page-nav a.here:visited:hover	{
+    color: #FFA860 !important; 
+    border-color: #fff;
+    background: #FFF1D5; 
+    }
+  page-nav a:active, page-nav a:visited:active {
+    color: #fff !important; 
+    border-color: #fff;
+    background: #a42b2b; 
+    }
+
+    
+  page-nav a.here:link,
+  page-nav a.here:visited {
+    color: #fff;
+    font-weight: 600; }
+  page-nav a.home {
+    display: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: rgba(161, 177, 197, 0.25);
+    padding: 15px 12px 5px 12px;
+    margin: -20px 0 10px;
+    border-radius: 6px;
+    transition: background 0.2s ease; }
+
+
+.page-jump {
+  display: none; }
+
+page-search {
+  position: relative;
+  width: 16.1875rem;
+  margin: 0; }
+  page-search:before {
+    position: absolute;
+    top: 50%;
+    left: 0.625rem;
+    margin: -7px 0 0;
+    content: '\f002';
+    font-family: 'FontAwesome';
+    color: #a1b1c5;
+    font-size: 0.8125rem;
+    line-height: 1; }
+  page-search input[type='search'] {
+    width: 100%;
+    height: 1.9375rem;
+    border: 0;
+    border-radius: 3px;
+    background: #5c7593;
+    color: #a1b1c5;
+    padding: 0 1rem 0 1.75rem; }
+  page-search ::-webkit-input-placeholder {
+    color: #a1b1c5; }
+  page-search ::-moz-placeholder {
+    color: #a1b1c5; }
+  page-search :-ms-input-placeholder {
+    color: #a1b1c5; }
+
+page-footer social-links {
+display: inline-block; 
+}
+
+
+/* Article summaries */
+
+all-summaries a:link {
+	display: block; 
+	width: 48%; 
+	float: right;
+	position: relative; 
+	text-decoration: none;
+	margin-bottom: 2em; 
+	}
+
+all-summaries a, all-summaries a:hover {
+	text-decoration: none;
+	}
+
+all-summaries.featured a {
+	width: 100%;
+	}
+
+summary {
+	background-color: #F0F4F9;
+	transition: background-color 0.2s ease; 
+	float: left;
+	padding: 0 1em;
+	border: solid 1px #D4D7DC;
+	}
+
+a:hover summary, a:visited:hover summary {
+	background: #FFF1D5; 
+	border-color: #FFA860;
+	transition: border-color 0.2s ease; 
+	}
+
+a:visited summary {
+	background: #f2f0ec; 
+	border-color: #EFD7A7;
+	}
+
+a:active summary, a:visited:active summary {
+	border-color: #a42b2b;
+	}
+
+all-summaries a p, all-summaries a:visited p {
+	color: #000;
+	}
+
+all-summaries a:hover p, all-summaries a:visited:hover p {
+	color: #696017;
+	}
+
+all-summaries img {
+	float: left;
+	margin-top: -1px;
+    width: 100%; } 
+
+summary p {
+	font-size: .9em; 
+	}
+
+a.has-masthead summary,
+a.has-masthead:hover summary {
+	border-top: 0;
+	}
+
+a.has-masthead article-type {
+	margin-top: -1px;
+	}
+
+all-summaries a:hover img {
+    -webkit-filter: saturate(125%) brightness(125%);
+	transition: -webkit-filter 0.2s ease; 
+    }
+
+summary h4 {
+	clear: all;
+	margin-top: 0;
+	margin: 1.5em 0 .5em 0;
+	color: #3C5D84;
+	transition: color 0.2s ease; 
+	}
+
+a:visited summary h4	{
+	color: #7F6938;
+	}
+
+a:hover summary h4,
+a:visited:hover summary h4	{
+	color: #F77000;
+	}
+
+a:active summary h4,
+a:visited:active summary h4	{
+	color: #a42b2b;
+	}
+
+a.has-masthead summary h4 {
+	margin-top: .5em;
+	}
+
+all-summaries a:nth-child(odd) {
+	float: left;
+    clear: both; }
+
+.review.continue-reading all-summaries a:nth-child(odd) {
+	float: right;
+	clear: right; }
+
+.review.continue-reading all-summaries a:nth-child(even) {
+	float: left;
+	clear: left; }
+
+.review.continue-reading all-summaries a:nth-child(1) {
+	float: left;
+	clear: left; } 
+
+article-type {
+	position: absolute;
+	left: 0;
+	top: 0; 
+	padding: 5px 5px 3px 5px; 
+	font-weight: bold;
+	font-size: 0.75rem;
+	line-height: .9em;
+	font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+	text-transform: uppercase;
+	color: #fff; 
+	background: #90A7C1;
+	transition: background 0.2s ease; }
+
+a:visited article-type	{
+	background-color: #A78545;
+	}
+
+a:hover article-type,
+a:visited:hover article-type	{
+	border: #FFA860;
+	background-color: #FFA860;
+	}
+
+
+a:active article-type,
+a:visited:active article-type	{
+	border: #a42b2b;
+	background-color: #a42b2b;
+	}
+
+all-summaries.featured article-type:before {
+	content: 'Featured ';
+	}
+
+all-summaries.featured H4 {
+    text-transform: uppercase;
+	}
+
+all-summaries.featured p	 {
+    font-size: 1.2rem;
+    }
+
+all-summaries.featured a p, 
+all-summaries.featured:visited a p	 {
+    color: #696017; 
+    }
+
+
+/* Break 4 - SDG */
+@media only screen and (min-width: 40.063em) {
+
+all-summaries.featured article-type {
+    font-size: .9rem;
+	padding: 7px 7px 5px 7px; 
+    }
+
+all-summaries.featured H4 {
+    font-size: 1.5em; 
+	}
+    }
+
+
+mail-item > a:last-child, mail-item > a:last-child:visited {
+    padding: .5rem 1rem;
+    border: solid 1px #C0CEDF; 
+  	float: right;
+	border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    text-transform: uppercase;
+    background: #FFF1D5; 
+    color: #a42b2b;
+	text-decoration: none; }
+
+mail-item > a:last-child:hover, mail-item > a:last-child:visited:hover {
+	color: #fff;
+    border-color: #FFA860;
+	background-color: #FFA860; }
+
+mail-item > a:last-child:active, mail-item > a:last-child:visited:active {
+	color: #fff;
+	border-color: #a42b2b;
+	background-color: #a42b2b; }
+
+mail-item {
+	padding-bottom: 3em; 
+	border-bottom: 1px dashed #999;
+	}
+
+mail-item:last-child {
+	border-bottom: none;
+	}
+
+/* End article summaries */
+
+.inset {
+	width: 45%; 
+	float: left; 
+	margin: 0 1.5em .5em -1.5em; 
+	border: 1px solid #ccc;
+	border-left: none;
+	border-right: none;
+	padding: 1em .25em;
+	}
+
+.pullquote {
+	font-size: 1.25em;
+	line-height: 2em;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    color: #7F6938; 
+    }
+
+see-also {
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    }
+
+see-also ul {
+	margin: 1em 0 0 0;
+	}
+
+see-also li {
+	margin-left: 1.5em;
+	}
+
+see-also label {
+	color: #7F6938;
+	font-weight: bold;
+	}
+
+see-also a {
+	text-decoration: none;
+	}
+
+.continue-link {
+	text-align: center; 
+	width: 100%;
+	margin-bottom: 2em; 
+	}
+
+.continue-link a, .continue-link a:visited {
+	text-decoration: none; 
+	background-color: #F4E6C9;
+	color: #a42b2b;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    border: solid 1px #90A7C1; 
+    border-radius: 50px;
+    padding: 20px 25px;
+    display: inline-block; 
+    text-align: center;
+	transition: background-color 0.2s ease; 
+	}
+
+.continue-link a:hover, .continue-link a:visited:hover {
+	color: #fff; 
+	border-color: #FFA860;
+	background-color: #FFA860;
+	}
+
+.continue-link a:active, .continue-link a:visited:active {
+	color: #fff; 
+	background-color: #a42b2b;
+	border-color: #a42b2b; 
+	}
+
+mail-item {
+	width: 100%;
+	clear: both; 
+	}
+
+blockquote.mail {
+	font-style: normal;
+	color: #000;
+	background: #C0CEDF; 
+	border-left: none;
+	margin-top: 0;
+	}
+
+mail-item h4 {
+	background: #3C5D84; 
+	padding: 6px 25px 6px 1.5em; 
+	margin-bottom: 0;
+	margin-top: 2em;
+	}
+
+mail-item h4, 
+mail-item h4 a:link, 
+mail-item h4 a:visited {
+	color: #a1b1c5; 
+	font-weight: normal; 
+	text-transform: uppercase; 
+	}
+mail-item h4 a:hover, 
+mail-item h4 a:visited:hover {
+	color: #fff; 
+	}
+
+mail-item article-date {
+	float: right;
+	color: #eee; 
+	padding: 6px 6px 0 0;
+	}
+
+
+
+/* Breakpoints
+========================================================================== */
+@media only screen and (max-width: 1000px) {
+  page-nav span.home,
+  page-nav social-links {
+    display: block;
+    margin: 0; }
+  page-nav span.home {
+    margin: 0 0 0.25rem; } }
+
+
+/* ==========================================================================
+Other
+========================================================================== */
+
+/*
+page-body-wrapper {
+  max-width: 92.5rem; }
+*/
+
+
+/* ==========================================================================
+Page Content, Columns
+========================================================================== */
+
+/*
+page-body-wrapper {
+  max-width: 92.5rem; }
+
+.logo {
+  width: 11.25rem; 
+  margin-top: -35px; } 
+*/
+
+/* ==========================================================================
+Page Content, Columns
+========================================================================== */
+page-content {
+	/*width: auto;*/
+	max-width: 81.25rem; 
+	padding: 0 1.25rem;
+    float: none;
+    margin: 0 auto;  } 
+  page-content:before {
+    position: relative;
+    display: block;
+    content: '';
+    height: 5px;
+    margin: -4px 0 0;
+    border-bottom: 1px solid #f2f0ec;
+    background: #a42b2b; }
+
+columns-all {
+  /*min-height: 100px;*/
+  background: transparent url("/static/_theme/img/sidebar.png") 0 0 repeat-y; }
+
+column-main {
+  max-width: 60rem;
+  background: #fff;
+  padding: 0 2.5rem 2.5rem 2.5rem;
+  }
+
+.search column-main	{
+	padding-left: 1rem;
+	padding-right: 1rem; }
+
+sidebar-column {
+  width: 18.75rem;
+  padding: .25rem .75rem 1.25rem .75rem; 
+  font-size: 0.875rem; 
+  }
+  sidebar-column section {
+    margin: 0 0 1.875rem; }
+
+
+/*ICON*/
+
+
+
+sidebar-column social-links {
+	text-align: center; 
+	margin-bottom: 1.5em;
+	}
+
+
+sidebar-column social-links a.icon:link, sidebar-column social-links a.icon:visited  {
+	color: #a42b2b;
+	}
+
+sidebar-column social-links a.icon:hover, sidebar-column social-links a.icon:visited:hover  {
+	color: #FFA860;
+	}
+
+sidebar-column social-links a.icon:active, sidebar-column social-links a.icon:visited:active  {
+	color: #F18888;
+	}
+
+sidebar-column .fa, {
+    font-size: 1.5rem; }
+
+sidebar-column a.icon .fa {
+  font-size: 2.5em;
+  }
+
+page-footer  a.icon .fa {
+    font-size: 1.25rem; }
+
+sidebar-column .hint:after,
+
+sidebar-column [data-hint]:after {
+    text-transform: none; }
+
+
+sidebar-column a.icon:hover, sidebar-column a.icon:visited:hover {
+    color: #FFA860;  }
+
+sidebar-column a.icon:active, sidebar-column a.icon:visited:active {
+    color: #ff7400;  }
+
+sidebar-column h4 {
+    margin: 0 1rem .5rem 0;
+    padding: .25rem .5rem .25rem 0;
+    text-align: center; 
+    text-transform: uppercase; 
+    font-size: 1em; 
+    width: 100%; 
+    border-radius: 6px;
+	transition: background 0.2s ease;
+    font-weight: 600; 
+    color: #a42b2b;
+  	}
+
+sidebar-column a h4 {
+    border: solid 1px #C0CEDF; 
+    background: #fff;
+    }
+
+sidebar-column a:hover h4	{
+	background: #FFA860;
+	color: #fff;
+    border-color: #FFA860; 
+	}
+
+ sidebar-column a:active h4	{
+	background: #a42b2b;
+	color: #fff;
+    border-color: #a42b2b; 
+	}
+
+sidebar-column a:link, sidebar-column a:visited {
+  	text-decoration: none;
+  	}
+
+  sidebar-column img {
+    margin: 0.3125rem 1.25rem 0 0; }
+  sidebar-column p,
+  sidebar-column ul {
+    margin: 0;
+    list-style-type: none; }
+  sidebar-column li {
+  	line-height: 1.5em;
+  	margin-bottom: .25em;
+  	}
+  sidebar-column li a {
+  	text-decoration: none;
+  	width: 100%;
+  	display: block;
+  	padding: .15rem .5rem;
+	border-radius: 4px;
+	transition: background-color 0.2s ease !important; 
+  	}
+  sidebar-column li a:hover {
+  	background-color: #fff;
+  	}
+
+sidebar-column H4 a:link, sidebar-column H4 a:visited	{
+	color: #3C5D84; 
+	text-decoration: none;
+	}
+
+sidebar-column H4 a:hover, sidebar-column H4 a:visited:hover	{
+	color: #F77000 !important; 
+	text-decoration: none;
+	}
+
+
+
+
+/* Breakpoint 1 */
+@media only screen and (max-width: 82.25em) {
+
+	page-content {
+		max-width: 70rem;
+	}
+
+	columns-all {
+	background: transparent url("/static/_theme/img/sidebar.png") -180px 0 repeat-y; }
+
+	column-main {
+		max-width: 48.75rem;
+	}
+
+
+	header-wrapper page-nav {
+		float: none;
+	}
+
+	header-content page-search {
+		float: none;
+		margin: .5rem auto 0 auto;
+	}
+}
+
+/* Breakpoint 2 */
+@media only screen and (max-width: 71.063em) {
+
+  page-content {
+    /*width: auto;*/
+    max-width: 62.5rem; }
+
+    page-content:before {
+      position: relative;
+      display: block;
+      content: '';
+      height: 5px;
+      margin: -4px 0 0;
+      border-bottom: 1px solid #f2f0ec;
+      background: #a42b2b; } 
+
+  columns-all {
+    background: #fff; 
+    background-image: none; }
+
+  column-main,
+  sidebar-column {
+    float: none;
+    clear: both; 
+    width: auto; }
+    
+	column-main {
+		max-width: 100%;
+	}
+
+  sidebar-column {
+    border-top: 1px solid #ded5bf;
+    background: #FFF1D5; 
+    padding: 0; }
+    sidebar-column section {
+      float: left;
+      width: 33%;
+      margin: 0;
+      padding: 1.25rem; }
+    sidebar-column H4 a {
+      margin-left: 1em;
+      float: none; } 
+      
+     sidebar-column social-links {
+      margin: .5em 0 0 0;
+     }
+
+#mailing-list	{
+	width: 30rem;
+	display: block;
+	margin: 0 auto;
+	}
+
+}
+
+/* Breakpoint 3 */
+@media only screen and (max-width: 50.563em) {
+  column-main {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem; }
+
+  page-content:before {
+    display: none; }
+
+  sidebar-column section {
+    width: 33.33333%; }
+  sidebar-column section.about {
+    width: 100%; }
+
+}
+
+/* Breakpoint 4 */
+@media only screen and (max-width: 40.063em) {
+
+  body,
+  page-content {
+    padding: 0; }
+
+  column-main {
+    padding: 0 1.25rem 1.25rem; }
+
+  sidebar-column section {
+    float: none;
+    width: 100%;
+    padding: 1.25rem 1.25rem 0; }
+    sidebar-column section:last-child {
+      padding-bottom: 1.25rem; }
+
+#mailing-list	{
+	width: auto;
+	margin: 0 1rem;
+	}
+
+}
+/**
+* @desc			Header, main nav, search styles
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Base Settings
+========================================================================== */
+header-wrapper {
+  margin: 0;
+  background: #3C5D84; 
+  border-bottom: solid 2px #fff;
+  padding: 0.9375rem 0;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.9375rem;
+  text-align: center;
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif; }
+
+.home header-wrapper {
+  margin: 0 0 2.1875rem 0; }
+
+header-content {
+  max-width: 80rem; 
+  padding: 0 1.25rem; }
+
+
+/* Breakpoint 1 */
+@media only screen and (max-width: 82.25em) {
+
+	header-content {
+		max-width: 67.5rem;
+	}
+
+}
+
+/* Breakpoint 3 */
+@media only screen and (max-width: 50.563em) {
+  header-wrapper {
+    margin: 0; } }
+/**
+* @desc			Page content
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Base Settings
+========================================================================== */
+/**
+* @desc			Footer
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Base Settings
+========================================================================== */
+page-footer {
+  margin: 1px 0 0;
+  text-align: center; 
+  background: #3C5D84; 
+  padding: 0.625rem 1.25rem;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.9375rem;
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif; }
+  page-footer a:link,
+  page-footer a:visited {
+    height: auto; }
+  page-footer .copyright {
+  clear: both; 
+    font-size: 0.875rem; }
+
+/* Breakpoint 2 */
+@media only screen and (max-width: 71.063em) {
+
+      sidebar-column {
+      float: left; 
+      margin-top: 2em; 
+      width: 100% ; 
+      }
+
+  page-footer {
+    padding: 1.25rem; } }
+/**
+* @desc			Article layout elements
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Article Masthead
+========================================================================== */
+.article-masthead {
+  height: 22.75rem;
+  margin: 0 -2.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.home .article-masthead {
+	background-image: url('/static/_theme/img/df-masthead.jpg');
+	}
+
+a.logo-banner {
+	display: block; 
+	margin: 0 auto 2em auto;
+	height: 120px;
+	width: 540px;
+	background: url('/static/_theme/img/df-logo.png') no-repeat; }
+
+a.logo-banner:hover	{
+	background: url('/static/_theme/img/df-logo.png') 0 -120px; }
+
+/* ==========================================================================
+Article Sharing
+========================================================================== */
+
+.article-sharing {
+  margin: 0 0 0 -70px; }
+
+  .article-sharing a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 0 1px;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 43px;
+    text-align: center;
+    transition: background-color 0.2s ease; }
+    .article-sharing a.twitter {
+      background-color: #83c3f3; }
+      .article-sharing a.twitter:hover, .article-sharing a.twitter:active {
+        background-color: #55acee; }
+    .article-sharing a.facebook {
+      background-color: #5b70b4; }
+      .article-sharing a.facebook:hover, .article-sharing a.facebook:active {
+        background-color: #455897; }
+
+.has-masthead .article-sharing {
+  float: none;
+  position: absolute;
+  top: 8.5rem;
+  left: -40px;
+  margin: 0; }
+
+
+/* ==========================================================================
+Article Content
+========================================================================== */
+
+article-content {
+  position: relative;
+  min-height: 10rem;
+  padding: 0 1.875rem 1.5625rem;
+  background: #fff; }
+
+H1 {
+    letter-spacing: -1px; 
+    padding: 1.6rem 0;
+    line-height: 1; }
+
+.review h1	{
+	margin-right: 3rem;
+	}
+
+.has-masthead article-content {
+  margin-top: -7.5rem; }
+
+.home.has-masthead article-content {
+	padding: 1.5rem;
+	}
+
+.mail-item h2,
+.mailbag h1 {
+	text-align: center;
+	padding-right: 0;
+	}
+
+.mail-item h2	{
+	padding-top: 1.6rem; 
+	}
+
+meta-note, see-also {
+    font-weight: normal;
+    background: #f2f0ec;
+    border: 1px solid #e6e1d9;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    margin: .5rem 0; 
+    overflow: auto; }
+
+meta-note {
+	display: inline-block;
+	font-style: italic;
+	}
+
+credit-details {
+	text-align: center; 
+	margin: 0 0 1rem 0;
+	padding-top: 1rem;	}
+
+credit-author,
+credit-source  {
+	color: #999;
+	font-size: .875rem;
+	text-transform: uppercase;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;	}
+    
+credit-author:before {
+	content: 'By '; 
+	}
+	
+credit-source:before {
+	content: ' | '; 
+	font-family: "ff-tisa-web-pro", Georgia, sans-serif; 
+	color: #000;
+	}
+
+credit-source a,
+credit-source nobr {
+	font-family: "ff-tisa-web-pro", Georgia, sans-serif; 
+	text-transform: none;
+	font-size: 1rem;
+	}
+
+
+article-rating {
+  position: absolute;
+  top: -1rem;
+  right: -1.25rem;
+  width: 90px;
+  height: 90px;
+  border-radius: 90px;
+  background: #a42b2b; 
+  color: #fff;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 90px;
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+  -ms-transform: rotate(-12deg);
+  -webkit-transform: rotate(-12deg);
+  transform: rotate(-12deg); }
+
+.has-masthead article-rating	{
+  box-shadow: 0 0 10px 2px white;
+	}
+
+content-lead p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #7F6938; }
+
+inline-image {
+	vertical-align: top;
+	max-width: 60%;
+	}
+
+inline-image img {
+  margin: 0 -1.25rem 1.6875rem 2rem;  }
+
+
+
+review-sidebar {
+  width: 14.5rem; 
+  margin: 0 -3.25rem 1.6875rem 1.25rem; 
+  color: #fff;
+  font-size: .875em; }
+
+  review-sidebar div {
+    background: #5E420C; /* 7F6938 */
+    margin: 0 0 1px;
+    padding: 1rem; }
+
+review-sidebar div.continues,
+review-sidebar div.amazon {
+      padding: 1px 0; 
+      text-align: center; 
+      background: none; }
+
+    review-sidebar div.continues {
+    	display: none;
+    	}
+
+    review-sidebar div.continues a:link, review-sidebar div.continues a:visited {
+      color: #999;
+      font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+      text-transform: uppercase; }
+
+    review-sidebar div:last-child {
+      background: #4F3500;
+      font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+      font-size: .8rem;
+      text-transform: uppercase; }
+  review-sidebar h4 {
+    margin: 0;
+    font-size: .875rem;
+    color: #fff;
+    font-weight: normal;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    text-transform: uppercase; }
+
+ review-sidebar .rating {
+ 	font-weight: bold; }
+
+  review-sidebar a:link,
+  review-sidebar a:visited {
+    color: #fff;
+    text-decoration: none; }
+  review-sidebar a:hover,
+  review-sidebar a:active {
+    text-decoration: underline; }
+
+
+.related h3 {
+ 	text-transform: uppercase; 
+    letter-spacing: 6px; 
+ 	}
+
+
+/* Breakpoint 3 */
+@media only screen and (max-width: 50.563em) {
+  .article-masthead   {
+    margin-left: -1.25rem;
+    margin-right: -1.25rem; }
+
+
+.home header-wrapper {
+  margin: 0; }
+
+.review article-content, .article article-content {
+	padding-top: 0;
+	}
+
+  .article-sharing {
+    float: none;
+    margin: 0 0 1rem;
+     } 
+
+    .article-sharing a {
+      width: 33px;
+      height: 30px;
+      font-size: 1.125rem;
+      line-height: 32px; }
+
+.inset {
+	margin-left: -.5em;
+	}
+
+  .has-masthead .article-sharing {
+    top: 8.5rem;
+    left: -23px; }
+
+    .article-sharing a {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      font-size: 1.125rem;
+      line-height: 26px; }
+
+  .has-masthead .article-sharing {
+    position: static;
+    margin: 0 0 2rem 0; }
+
+  article-content {
+    padding: 1.25rem; } 
+
+H1 {	font-size: 2.25rem; 
+	padding-top: 0;}
+
+.has-masthead .review h1	{
+	margin-right: 0;
+	}
+
+
+h2 {
+    	font-size: 1.1em; }
+
+.review article-content, .article article-content  {
+	padding-top: 0 !important; 
+	}
+
+  review-sidebar {
+    margin-right: -1.25rem; }
+
+  inline-image img {
+    margin: 0 0 1.6875rem 1.25rem; } 
+
+
+.by-ratings {
+	width: 100%;
+	margin-left: 0;
+	}
+
+
+.by-ratings	.form-element select {
+	width: 90%;
+	}
+
+.by-ratings	.form-element {
+	width: 50%; 
+	}
+}
+
+/* Breakpoint 4 */
+@media only screen and (max-width: 40.063em) {
+
+  page-nav a:link,
+  page-nav a:visited {
+    margin: 0; 
+    padding: 0 .3rem; 
+    }
+
+  page-nav a.about	{
+  	display: none;
+  	}
+
+
+a.logo-banner {
+	display: block; 
+	margin: .5em auto 1em auto;
+	height: 73px;
+	width: 375px;
+	background: url('/static/_theme/img/df-logo2.png') no-repeat; }
+
+a.logo-banner:hover	{
+	background: url('/static/_theme/img/df-logo2.png') 0 -84px no-repeat; }
+
+
+all-summaries.featured H4 {
+    font-size: 1.3em; 
+	}
+
+all-summaries.featured p {
+    font-size: 1rem;
+    }
+
+all-summaries a:link {
+	width: 100%;
+	}
+
+.article-masthead {
+    height: 12.5rem; }
+
+.has-masthead article-content {
+	margin-top: -4.5em;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	}
+
+.home.has-masthead article-content {
+	padding: 1em !important;
+	}
+
+.has-masthead .article-sharing {
+  	margin-left: 1em;
+  	}
+
+H1 {
+	font-size: 2.1rem;
+	}
+
+.review h1	{
+	margin-right: 0;
+	}
+
+.article H1, .review h1 {
+	text-align: center; }
+
+.archive h1, .search h1	{
+	padding-top: 1rem; 
+	}
+
+H2 {
+	text-align: center;	}
+
+
+
+.mail-item h1	{
+	padding-top: 1.6rem; 
+	}
+
+.mail-item h2	{
+	padding-top: 0; 
+	}
+credit-source:before {
+	content: ''; 
+	}
+
+credit-author,
+credit-source {
+	display: block; 
+	}
+
+article-rating {
+    top: 5px;
+    margin-top: -.8em;
+    right: -1.625rem;
+    width: 65px;
+    height: 65px;
+    border-radius: 65px;
+    font-size: 2rem;
+    line-height: 65px; }
+
+.has-masthead article-rating {
+    top: 0.7rem;
+    margin-top: -.8em;
+    right: -0.625rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    font-size: 2.25rem;
+    line-height: 70px;}
+
+article-content {
+    padding: 0; }
+
+.has-masthead article-content {
+    padding: 1.25rem; }
+
+content-lead p {
+	font-size: 1.12rem;
+	}
+
+inline-image {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    text-align: center; 
+    float: none; } 
+
+inline-image img {
+	margin: 0;
+	padding: 0;
+	}
+
+.continue-link a, .continue-link a:visited {
+    padding: 10px 12px;
+	}
+
+.multi-select .form-element {
+	width: 100%; 
+	}
+
+.by-ratings	.form-element {
+	width: 100%; 
+	}
+
+header-content {
+	margin: 0; padding: 0;
+	}
+
+review-sidebar {
+    float: none;
+    width: auto;
+    margin: 0 0 1.6875rem; }
+
+review-sidebar div.continues {
+      display: block; }
+
+.pullquote {
+	display: none !important;
+	}
+
+content-above-fold {
+	padding-top: 1.5em;
+	}
+
+  page-nav a:link,
+  page-nav a:visited {
+	margin: 0; 
+    } 
+
+    } /* smallest ends */
+
+
+/**
+* @desc			Archive layout elements
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Archives
+========================================================================== */
+.search h1, .archive h1, .mailbag h1 {
+  text-align: center;  } 
+
+
+/* ==========================================================================
+Pagination
+========================================================================== */
+.pagination {
+  margin: 1.6875rem 0 0;
+  font-weight: bold;
+  width: 100%; 
+  float: left; 
+  font-size: .9rem;
+  line-height: 1;
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+  text-align: center; }
+  .pagination > * {
+    display: inline-block;
+    min-width: 1.5rem;
+    padding: .5rem .75rem; }
+  .pagination span {
+    font-weight: normal;
+    color: #999; }
+  .pagination .here {
+    background: #3C5D84;
+    border-radius: 3px;
+    color: #fff; }
+  .pagination a {
+    border-radius: 3px;
+    border: solid 1px #fff;
+    color: #3C5D84;
+    text-decoration: none;
+    transition: border 0.2s ease; }
+    .pagination a:hover {
+    border-color: #FFA860;
+      color: #FFA860; }
+   .pagination a:active {
+    background: #a42b2b;
+    border-color: #a42b2b;
+      color: #fff; }
+
+/**
+* @desc			Search layout elements
+* @author		Jason Morehead
+*/
+/* ==========================================================================
+Search
+========================================================================== */
+
+.browse-title a {
+	font-weight: bold;
+	float: left;
+	font-family: "proxima-nova", "Helvetica Neue", sans-serif; 
+    text-decoration: none;
+    border: 1px solid #FEFCFA;
+    padding: .325rem .4rem;
+    margin: 0 !important;
+    line-height: 1; }
+
+.search .browse-title a:hover,
+.search .browse-title a:visited:hover {
+  border-color: #FFA860;
+  background: #fff;
+    border-radius: 3px;
+  }
+    
+  .search .browse-title a:active,
+  .search .browse-title a:visited:active {
+  border-color: #a42b2b;
+  background: #a42b2b;
+  color: #fff;
+  }
+
+.form-footer {
+	float: right; 
+	width: 100%; 
+  text-align: center;
+  padding: .5rem; }
+/*
+.search .search-criteria .search-misc {
+  margin: 0 -.25rem; }
+  .search .search-criteria .search-misc .form-row {
+    float: left;
+    width: 33.333333%;
+    padding: 0 .25rem; }
+
+ Breakpoint 3 
+@media only screen and (max-width: 50.563em) {
+
+  .search .search-criteria .search-misc {
+    margin: 0; }
+    .search .search-criteria .search-misc .form-row {
+      float: none;
+      width: 100%;
+      padding: 0; }       
+      }
+
+
+/* Breakpoint 5 */
+@media only screen and (max-width: 425px) {
+a.logo-banner,
+a.logo-banner:hover {
+	height: 82px;
+	width: 280px;
+	margin: 1em auto;
+	background: url('/static/_theme/img/df-logo3.png') no-repeat; }
+
+.home .article-masthead {
+	background-image: url('/static/_theme/img/df-masthead-sm.jpg');
+	}
+}
+

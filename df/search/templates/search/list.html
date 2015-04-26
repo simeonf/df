@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results{% endblock %}
+{% block body_class %}archive{% endblock %}
+{% block main %}
+<article-content>
+  <h1>Search Results</h1>
+  <all-summaries>
+    {% for object in hits %}
+      {% include "article/summary.html" %}
+    {% empty %}
+    <p>No results found for that search!</p>
+    {% endfor %}
+  </all-summaries>
+</article-content>
+{% with hits as records %}
+ {% include "pagination.html" %}
+{% endwith %}
+
+{% endblock %}
+
+
+

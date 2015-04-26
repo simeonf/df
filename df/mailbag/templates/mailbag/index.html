@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body_class %}archive{% endblock %}
+
+{% block banner %}<a class="logo-banner" href="/"></a>{% endblock %}
+
+{% block main %}
+<article-content>
+  <h1>Mail</h1>
+  <all-summaries>
+    {% for object in mailbags %}
+    <a href="{{ object.get_absolute_url }}">
+	  <summary>
+        <article-type>
+          Mailbag 
+        </article-type>
+        <h4>{{ object.title|safe }}</h4>
+        <p>{{ object.blurb|safe }}</p>
+      </summary>
+    </a>
+    {% endfor %}
+  </all-summaries>
+  
+{% with mailbags as records %}
+ {% include "pagination.html" %}
+{% endwith %}
+</article-content>
+{% endblock %}
+
+
+

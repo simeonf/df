@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{mailbag.title|safe }}{% endblock %}
+
+{% block body_class %}mailbag{% endblock %}
+
+{% block banner %}<a class="logo-banner" href="/"></a>{% endblock %}
+
+{% block main %}
+<article-content>
+   <div class="article-sharing">
+        <a href="http://twitter.com/share" class="twitter" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://decentfilms.com{{ request.path }}" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+   </div>
+
+  <h1>{{ mailbag.title|safe }}{% if user.is_authenticated %} <a href="{{ mailbag.get_admin_url }}">Edit</a>{% endif %}</h1>
+  <h2>{{ mailbag.blurb|safe }}</h2>
+  <all-mail-items>
+    {% for entry in mailbag.mailbagentry_set.all %}
+    <mail-item>
+              <h4 id="entry-{{ entry.id }}"><a href="{{ entry.related_to.get_absolute_url }}">Re. {% firstof entry.title entry.related_to.title %}</a></h4>
+              <blockquote class="mail">
+                {{ entry.quote|safe }}
+                {{ entry.quote_below_the_fold|safe }}
+              </blockquote>
+                {{ entry.entry|safe }}
+                {{ entry.below_the_fold|safe }}
+              <a href="{{ mailbag.get_absolute_url }}#entry-{{ entry.id }}">Link to this item</a>
+          </mail-item>
+          {% endfor %}                                
+  </all-mail-items>
+</article-content>
+{% endblock %}
+
+
+

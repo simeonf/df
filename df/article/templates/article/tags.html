@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block body_class %}archive{% endblock %}
+{% block main %}
+<article-content>
+  <h1>Tags</h1>
+  <ul>
+    {% for tag in tags %}
+    <li><a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a> ({{ tag.num }})</li>
+    {% endfor %}
+  </ul>
+</article-content>
+{% endblock %}
+
+
+

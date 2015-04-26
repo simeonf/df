@@ -1,0 +1,31 @@
+<div class="pagination">
+  {% if records.has_previous %}
+    <a class="first" href="?page=1{{ qs }}"><i class="fa fa-angle-double-left"></i></a>
+	<a class="prev" href="?page={{ records.previous_page_number }}{{ qs }}"><i class="fa fa-angle-left"></i></span>
+  {% else %}
+    <span class="first"><i class="fa fa-angle-double-left"></i></span>
+	<span class="prev"><i class="fa fa-angle-left"></i></span>
+  {% endif %}
+  {% for num in records.paginator.page_range %}
+    {% if num == records.number %}
+	<strong class="here">{{ num }}</strong>
+    {% else %}
+      {% if records.paginator.num_pages > 5 %}
+       {% if num < records.number|add:"-2" or num > records.number|add:"4" %}
+        <!-- {{ num }} -->
+       {% else %}
+        <a href="?page={{ num }}{{ qs }}">{{ num }}</a>
+       {% endif %}
+      {% else %}
+	    <a href="?page={{ num }}{{ qs }}">{{ num }}</a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% if records.has_next %}
+	<a href="?page={{ records.next_page_number }}{{ qs }}" class="next"><i class="fa fa-angle-right"></i></a>
+	<a href="?page={{ records.paginator.num_pages }}{{ qs }}" class="last"><i class="fa fa-angle-double-right"></i></a>
+  {% else %}
+    <span class="next"><i class="fa fa-angle-right"></i></span>
+	<span class="last"><i class="fa fa-angle-double-right"></i></span>
+  {% endif %}
+</div>

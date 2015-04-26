@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body_class %}archive{% endblock %}
+{% block main %}
+<article-content>
+  <h1>{{ title }}</h1>
+  <h2 style="display:block;clear:both;">Latest</h2>
+  <all-summaries>
+  {% for entry in latest %}
+    {% with entry.article as object %}
+      {% include "article/summary.html" %}
+    {% endwith %}
+  {% endfor %}
+  </all-summaries>
+  <h2 style="display:block;clear:both;">All</h2>
+  <all-summaries>
+  {% for entry in all %}
+    {% with entry.article as object %}
+      {% include "article/summary.html" %}
+    {% endwith %}
+  {% endfor %}
+  </all-summaries>
+</article-content>
+{% endblock %}

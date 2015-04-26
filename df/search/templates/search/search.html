@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+{% block body_class %}search{% endblock %}
+{% block main %}
+
+<article-content>
+    <h1>Search Page</h1>
+    <form method="get" action="">
+      <p><b>Browse by title:</b> Choose any letter.</p>
+      <div class="browse-title">
+        <p>
+          {% for letter in letters %}
+          <a href="/search?search=Search&order=title&fletter={{ letter }}">{{ letter }}</a>
+          {% endfor %}
+        </p>
+      </div>
+      <div class="search-criteria" role="search">
+        <p><b>Search by criteria:</b> Select as many or as few search criteria as you wish and hit <strong>Search</strong>.
+          See also the sidebar for quick recommendations by genre and category and other quick searches.</p>
+        <div class="form-row">
+          <div class="form-element">
+            <label for="title">Title word(s)</label>
+            {{ form.title }}
+          </div>
+          <div class="form-element">
+            <label for="keywords">Search term(s)</label>
+            {{ form.keywords }}
+          </div>
+          <div class="form-element">
+            <label for="cast">Filmmaker(s), studio(s)</label>
+            {{ form.cast }}
+          </div>
+          <div class="form-element">
+            <label>Year of release</label>
+            <div>
+              <nobr><label for="year_from">From</label>{{ form.year_from }}</nobr>
+              <nobr><label for="year_to">To</label>{{ form.year_to }}</nobr>
+            </div>
+          </div>
+        </div><!-- end form row -->
+      </div>
+      <div class="form-row multi-select">
+        <div class="form-element">
+          <label for="genreSelect">Genres and categories</label>
+          {{ form.genre }}
+        </div>
+        
+        <div class="form-element">
+          <label for="labelSelect">Other tags</label>
+          {{ form.label }}
+        </div>
+      </div>
+      <div class="by-ratings">
+        <div class="form-row">
+          <div class="form-element">
+            <label for="overall">Overall Recommendability</label>
+            {{ form.overall }}
+            {{ form.overall_modifier }}
+          </div>
+          
+          <div class="form-element">
+            <label for="artistic">Artistic / Entertainment Value</label>
+            {{ form.artistic }}
+            {{ form.artistic_modifier }}
+          </div>
+          <div class="form-element">
+            <label for="moral">Moral / Spiritual Rating</label>
+            {{ form.moral }}
+            {{ form.moral_modifier }}
+          </div>
+          <div class="form-element">
+            <label for="age">Age Appropriateness</label>
+            {{ form.age }}
+            {{ form.age_modifier }}
+          </div>
+          <div class="form-element">
+            <label for="mpaa">MPAA Rating</label>
+            {{ form.mpaa }}
+            {{ form.mpaa_modifier }}
+          </div>
+          <div class="form-element">
+            <label for="usccb">USCCB/CNS Classification</label>
+            {{ form.usccb }}
+            {{ form.usccb_modifier }}
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-footer">
+        <input class="search-button button" type="submit" name="search" value="Search">
+      </div>
+    </form>
+</article-content>
+
+{% endblock %}

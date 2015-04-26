@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<!--[if lte IE 9]><html class="no-js lt-ie10 lte-ie9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+<head>
+
+	<!-- Default Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="">
+
+	<!-- General meta -->
+	<meta name="description" content="">
+	<meta name="author" content="Steven D. Greydanus">
+
+	<!-- Open Graph meta -->
+	<meta property="og:site_name" content="Decent Films">
+	<meta property="og:type" content="blog">
+	<meta property="og:url" content="http://decentfilms.com{{ request.path  }}">
+    {% if og_image %}
+	<meta property="og:image" content="{{ MEDIA_URL }}{{ og_image }}">
+    {% endif %}
+	<meta property="og:title" content="Decent Films - {{ title|striptags|safe }}">
+    {% if blurb %}
+	  <meta property="og:description" content="{{ blurb|striptags|safe }}">
+    {% else %}
+      <meta property="og:description" content="Film Appreciation and criticism informed by Christian faith">
+    {% endif %}
+	<meta property="article:author" content="https://www.facebook.com/decentfilms">
+
+	<!-- Twitter meta -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator:id" content="@decentfilms">
+	<meta name="twitter:url" content="http://decentfilms.com{{ request.path }}">
+	<meta name="twitter:title" content="Decent Films - {{ title|striptags|safe }}">
+    {% if blurb %}
+      <meta name="twitter:description" content="{{ blurb|striptags|safe }}">
+    {% else %}
+	  <meta name="twitter:description" content="Film Appreciation and criticism informed by Christian faith">
+    {% endif %}
+    {% if og_image %}
+	<meta name="twitter:image" content="{{ MEDIA_URL }}{{ og_image }}">
+    {% endif %}
+	<title>{% block title %}{{ title|striptags }}{% endblock %} - Decent Films</title>
+
+	<!-- Page Image -->
+    {% if og_image %}
+	<link rel="image_src" href="{{ MEDIA_URL }}{{ og_image }}">
+    {% else %}
+    
+    {% endif %}
+	
+
+	<!-- Nav -->
+	<link rel="canonical" href="http://decentfilms.com{{request.path}}">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/_theme/css/site.css">
+	<link rel="stylesheet" href="/static/_theme/css/tooltipster.css">
+
+	<!-- JS -->
+	<script src="/static/_theme/js/third-party/modernizr.283.min.js"></script>
+	<script src="//use.typekit.net/nys1llz.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+    <link rel="shortcut icon" href="{{ STATIC_URL }}favicon32.png">
+    <!-- Newsletter subscription script -->
+    <script type="text/javascript"><!--
+    function HideContent(d) {
+    document.getElementById(d).style.display = "none";
+    }
+    function ShowContent(d) {
+    document.getElementById(d).style.display = "block";
+    }
+    function ReverseDisplay(d) {
+    if(document.getElementById(d).style.display == "none") { document.getElementById(d).style.display = "block"; }
+    else { document.getElementById(d).style.display = "none"; }
+    }
+    //--></script>
+    
+	
+</head>
+
+<body class="{% block body_class %}home{% endblock %}">
+
+	<header-wrapper role="banner">
+		<header-content>
+            {% load menu_tags %}
+			<page-nav role="navigation">
+				<a href="/" class="{% here request.path "/" %}">Decent Films</a>
+				<div>
+				<a href="/now-playing" class="{% here request.path "/now-playing" %}">Now Playing</a>
+				<a href="/home-video" class="{% here request.path "/home-video" %}">Home Video</a>
+				<a href="/reviews" class="{% here request.path "/reviews" %}">Reviews</a>
+				<a href="/articles" class="{% here request.path "/articles" %}">Articles</a>
+				<a href="/blog" class="{% here request.path "/blog" %}">Blog</a>
+				<a href="/mail" class="{% here request.path "/mail" %}">Mail</a>
+                <a href="/about" class="{% here request.path "/about" %} about">About</a>                
+				<a href="/search" class="{% here request.path "/search" %}">Search Page</a>
+				</div>
+			</page-nav>
+
+			<page-search role="search">
+
+				<form method="GET" action="/search">
+					<div>
+						<input type="search" name="title" placeholder="Quick search...">
+					</div>
+				</form>
+			</page-search>
+	
+		</header-content>
+	</header-wrapper>
+	
+	<!-- BEGIN primary content area, including footer -->
+	<page-body-wrapper>
+        {% block banner %}<a class="logo-banner" href="/"></a>{% endblock %}
+		<page-content>
+
+			<columns-all>
+
+				<column-main role="main">
+                  {% block main %}{% endblock %}
+				</column-main>
+			
+				<sidebar-column role="complementary">
+                  {% block sidebar %}
+                  {% load sidebar_tags %}                  
+                    {% sidebar %}
+                  {% endblock %}
+				</sidebar-column>
+			
+			</columns-all>
+	
+			<page-footer role="contentinfo">
+
+				<page-nav role="navigation">
+					<a href="/">Home</a>
+					<a href="/now-playing" class="{% here request.path '/now-playing' %}">Now Playing</a>
+					<a href="/home-video" class="{% here request.path '/home-video' %}">Home Video</a>
+					<a href="/reviews" class="{% here request.path '/reviews' %}">Reviews</a>
+					<a href="/articles" class="{% here request.path '/articles' %}">Articles</a>
+					<a href="/blog" class="{% here request.path '/blog' %}">Blog</a>
+					<a href="/mail" class="{% here request.path '/mail' %}">Mail</a>
+					<a href="/search" class="{% here request.path '/search' %}">Search Page</a>
+					<a href="/about" class="{% here request.path '/about' %}">About</a>
+					<a href="/contact" class="{% here request.path '/contact' %}">Contact</a>
+					
+                 {% include "social.html" %}
+
+				</page-nav>
+
+				<p class="copyright">Copyright &copy; 2000&#8211;<script>document.write(new Date().getFullYear())</script> Steven D. Greydanus. All rights reserved.</p>
+
+			</page-footer>		
+			
+		</page-content>
+	
+	</page-body-wrapper>
+    
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="/static/_theme/js/third-party/fluidvids.min.js"></script>
+	<script src="/static/_theme/js/third-party/jquery.tooltipster.min.js"></script>
+	<script src="/static/_theme/js/site.js"></script>
+    <script> 
+     var $buoop = {c:2}; 
+     function $buo_f(){ 
+      var e = document.createElement("script"); 
+      e.src = "//browser-update.org/update.js"; 
+      document.body.appendChild(e);
+     };
+     try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+     catch(e){window.attachEvent("onload", $buo_f)}
+    </script> 
+    {% block endscript %}
+    {% endblock %}
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60349480-1', 'auto');
+  ga('send', 'pageview');
+
+</script>    
+</body>
+
+</html>
