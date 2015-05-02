@@ -101,6 +101,11 @@
          {% if article.below_the_fold %}
            {{ article.below_the_fold|safe }}
          {% endif %}
+         {% if article.product_notes %}
+           <meta-note>
+             {{ article.product_notes|safe }}
+           </meta-note>
+          {% endif %}
         </content-below-fold>
       <!-- END article "below fold" content -->
     {% endif %}
