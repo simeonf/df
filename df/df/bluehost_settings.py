@@ -1,6 +1,7 @@
 import os
 from .settings import *
 
+FORCE_SCRIPT_NAME = ''
 DEBUG = False
 TEMPLATE_DEBUG = False
 STATIC_ROOT = '/home3/stevendg/www/new/static'
