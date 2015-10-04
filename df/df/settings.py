@@ -85,6 +85,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'df.middleware.OldUrlsMiddleware',
 )
 
@@ -142,4 +143,5 @@ TEMPLATE_CONTEXT_PROCESSORS = ('django.contrib.auth.context_processors.auth',
                                'django.core.context_processors.media',
                                'django.core.context_processors.static',
                                'django.contrib.messages.context_processors.messages',
+                               'df.ctx.site',
                                'django.core.context_processors.request')

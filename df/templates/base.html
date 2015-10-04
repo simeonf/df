@@ -20,9 +20,9 @@
 	<meta property="og:type" content="blog">
 	<meta property="og:url" content="http://decentfilms.com{{ request.path  }}">
     {% if og_image %}
-	<meta property="og:image" content="{{ MEDIA_URL }}{{ og_image }}">
+	<meta property="og:image" content="http://{{site}}{{ MEDIA_URL }}{{ og_image }}">
     {% endif %}
-	<meta property="og:title" content="Decent Films - {{ title|striptags|safe }}">
+	<meta property="og:title" content="{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | Decent Films - SDG Reviews">
     {% if blurb %}
 	  <meta property="og:description" content="{{ blurb|striptags|safe }}">
     {% else %}
@@ -34,16 +34,16 @@
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:creator:id" content="@decentfilms">
 	<meta name="twitter:url" content="http://decentfilms.com{{ request.path }}">
-	<meta name="twitter:title" content="Decent Films - {{ title|striptags|safe }}">
+	<meta name="twitter:title" content="{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | Decent Films - SDG Reviews">
     {% if blurb %}
       <meta name="twitter:description" content="{{ blurb|striptags|safe }}">
     {% else %}
 	  <meta name="twitter:description" content="Film Appreciation and criticism informed by Christian faith">
     {% endif %}
     {% if og_image %}
-	<meta name="twitter:image" content="{{ MEDIA_URL }}{{ og_image }}">
+	<meta name="twitter:image" content="http://{{site}}{{ MEDIA_URL }}{{ og_image }}">
     {% endif %}
-	<title>{% block title %}{{ title|striptags }}{% endblock %} - Decent Films</title>
+	<title>{% block title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %}{% endblock %} - Decent Films </title>
 
 	<!-- Page Image -->
     {% if og_image %}
