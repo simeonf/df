@@ -31,7 +31,7 @@
 	<meta property="article:author" content="https://www.facebook.com/decentfilms">
 
 	<!-- Twitter meta -->
-	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="{% if og_image %}summary_large_image{% else %}summary{% endif %}">
 	<meta name="twitter:creator:id" content="@decentfilms">
 	<meta name="twitter:url" content="http://decentfilms.com{{ request.path }}">
 	<meta name="twitter:title" content="{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | Decent Films - SDG Reviews">
