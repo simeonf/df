@@ -13,7 +13,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'STORAGE_ENGINE': 'InnoDB',
         'NAME': 'stevendg_twopointzero',
-        'USER': 'stevendg_two',
+        'USER': 'stevendg_2',
         'PASSWORD': os.environ['DF_DB_PASSWORD'],
         'HOST': '',
         'PORT': '',
