@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'mailbag',
     'content_group',
     'search',
+    'oldsite',
 )
 
 MIDDLEWARE_CLASSES = (

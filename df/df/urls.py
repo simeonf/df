@@ -12,7 +12,8 @@ urlpatterns = patterns('',
                        url(r'^', include('article.urls')),
                        url(r'^home-video$', 'sidebar.views.dvd'),
                        url(r'^now-playing$', 'sidebar.views.theater'),
-                       url(r'^search$', 'search.views.search'),                       
+                       url(r'^sections/', include('oldsite.urls')),
+                       url(r'^search$', 'search.views.search'),
                        url(r'^mail', include('mailbag.urls')),
 )
 
