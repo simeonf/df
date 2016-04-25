@@ -62,7 +62,8 @@ def index(request):
     paginator = Paginator(list(mixed), 10)
     return render(request, "index.html", {'objects': page(request, paginator),
                                           'featured': Article.objects.filter(feature=True)[:1],
-                                          'title': "Home Page"
+                                          'og_image': 'static/_theme/img/df-masthead.jpg',
+                                          'title': ""
                                         })
 
 @cache_page(60)    
