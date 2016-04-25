@@ -22,7 +22,7 @@
     {% if og_image %}
 	<meta property="og:image" content="http://{{site}}{{ MEDIA_URL }}{{ og_image }}">
     {% endif %}
-	<meta property="og:title" content="{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | Decent Films - SDG Reviews">
+	<meta property="og:title" content="{% if title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | {% endif %}Decent Films - SDG Reviews">
     {% if blurb %}
 	  <meta property="og:description" content="{{ blurb|striptags|safe }}">
     {% else %}
@@ -34,16 +34,16 @@
 	<meta name="twitter:card" content="{% if og_image %}summary_large_image{% else %}summary{% endif %}">
 	<meta name="twitter:creator:id" content="@decentfilms">
 	<meta name="twitter:url" content="http://decentfilms.com{{ request.path }}">
-	<meta name="twitter:title" content="{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | Decent Films - SDG Reviews">
+	<meta name="twitter:title" content="{% if title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | {% endif %}Decent Films - SDG Reviews">
     {% if blurb %}
       <meta name="twitter:description" content="{{ blurb|striptags|safe }}">
     {% else %}
-	  <meta name="twitter:description" content="Film Appreciation and criticism informed by Christian faith">
+	  <meta name="twitter:description" content="Film appreciation and criticism informed by Christian faith">
     {% endif %}
     {% if og_image %}
 	<meta name="twitter:image" content="http://{{site}}{{ MEDIA_URL }}{{ og_image }}">
     {% endif %}
-	<title>{% block title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %}{% endblock %} - Decent Films </title>
+	<title>{% block title %}{% if title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %}{% endif %}{% endblock %}{% if title %} - Decent Films{% else %}Decent Films - SDG Reviews{% endif %}</title>
 
 	<!-- Page Image -->
     {% if og_image %}
