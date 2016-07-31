@@ -96,10 +96,10 @@ def build_query(get):
         where.append('id in (' + ', '.join(article_ids) + ')')
 
     # labels
-    labels = get.getlist('labels')
+    labels = get.getlist('label')
     if labels:
         article_ids = [str(row[0]) for row in Tags.objects.filter(id__in=labels).values_list('article__id')]
-        where.append('id in (' + article_ids.join(',') + ')')
+        where.append('id in (' + ','.join(article_ids) + ')')
 
     # year tags
     year = get.get('year_from', '')
@@ -154,7 +154,6 @@ def build_query(get):
     where = ' AND '.join(filter(None, where))
     
     sql = 'select * from blog where ' + where + orderby
-    print sql
     return sql, placeholders
 
     # if((get['title']))
