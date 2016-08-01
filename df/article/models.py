@@ -263,11 +263,11 @@ class Article(models.Model):
             return '0000-00-00'
     date.admin_order_field = 'dt'
 
-    def save(self, force_insert=False, force_update=False):
+    def save(self, force_insert=False, force_update=False, **kwargs):
         # Go ahead and add a genre record if necessary
         if not self.dt_modified:
             self.dt_modified = self.dt
-        super(Article, self).save(force_insert, force_update)
+        super(Article, self).save(force_insert, force_update, **kwargs)
         rebuild_recent()
 
     def get_admin_url(self):

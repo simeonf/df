@@ -6,9 +6,12 @@ from article.models import Article
 register = template.Library()
 
 def get_articles(cats):
-  se = SidebarEntry.objects.filter(category__in=cats).select_related('article')
-  articles = set([s.article for s in se])
-  return sorted(articles, key=lambda a: a.title)[:10]
+  """Return unique articles for set of sidebar entries in sidebar.title order."""
+  se = SidebarEntry.objects.filter(category__in=cats).select_related('article').order_by('title')
+  sidebar_order = {entry.article.id: i for (i, entry) in enumerate(se)}
+  articles = list(set([s.article for s in se]))
+  articles = sorted(articles, key=lambda a: sidebar_order[a.id])
+  return articles[:10]
   
 @register.inclusion_tag('sidebar.html')
 def sidebar():
