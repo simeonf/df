@@ -5,7 +5,6 @@ from django.core.urlresolvers import reverse
 
 from article.models import Article
 
-from rebuild_index import rebuild_recent
 
 class MailBag(models.Model):
     title = models.CharField(max_length=255)
@@ -23,7 +22,7 @@ class MailBag(models.Model):
     def category():
       """Here for compatibility in template with articles."""
       return "Mailbag"
-      
+
     def get_absolute_url(self):
         return "/mail/%s" % self.slug
 
@@ -31,7 +30,7 @@ class MailBag(models.Model):
     def get_admin_url(self):
         return reverse("admin:%s_%s_change" %
                        (self._meta.app_label, self._meta.module_name), args=(self.id,))
-        
+
     def __unicode__(self):
         if(self.title):
             return unicode(self.title)
@@ -46,7 +45,7 @@ class MailBagEntry(models.Model):
     search_blurb = models.TextField(blank=True)
     search = models.BooleanField("enable search", default=False)
     quote = models.TextField()
-    quote_below_the_fold = models.TextField(blank=True)    
+    quote_below_the_fold = models.TextField(blank=True)
     entry = models.TextField("response", blank=True)
     below_the_fold = models.TextField(blank=True)
     display = models.BooleanField(default=False)
@@ -65,9 +64,3 @@ class MailBagEntry(models.Model):
             return unicode(self.mail_bag.title + " :: " + self.related_to.title)
         else:
             return self.mail_bag.title
-        
-
-    def save(self, force_insert=False, force_update=False):
-        super(MailBagEntry, self).save(force_insert, force_update)
-        rebuild_recent()
-        
