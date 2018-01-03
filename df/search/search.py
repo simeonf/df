@@ -14,7 +14,7 @@ class Ratings(object):
     age = ['K','T','A','Z']
     mpaa = ['G','PG','PG-13','R','NR']
     usccb = ["A-I","A-II","A-III",'O', 'NR']
-    
+
     @staticmethod
     def locate(tagnames, values, join=" or "):
         """
@@ -22,7 +22,7 @@ class Ratings(object):
         sql to find the tags.
         >>> locate(['overall'], ['A', 'B'])
         "(overall='A' or overall='B')"
-        
+
         """
         template = "%s='%s'"
         clause = []
@@ -33,11 +33,11 @@ class Ratings(object):
         if "or" in join:
             sql = "({})".format(sql)
         return sql
-        
+
     @classmethod
     def sql(cls, tagnames, value, modifier):
         """ build where clause sql to select matching records by ratings tag.
-        
+
         >>> Ratings.sql(["overall"], "A", ">=")
         "(overall='A+' or overall='A')"
 
@@ -67,7 +67,7 @@ def build_query(get):
     def simple_where(data, field):
       if data:
           where.append(field + " like '%%" + esc(data) + "%%'")
-    
+
     # title search
     if get.get('title'):
         title  = esc(get['title'])
@@ -89,6 +89,7 @@ def build_query(get):
 
     # genre query. some manual queries "?genre=action&genre2=adventure" to account for
     # i'm fetching all article ids and issuing an id in [...] query cause that's how php did it.
+    import pdb;pdb.set_trace()
     genres = get.getlist('genre') + [get.get('genre2')]
     genres = filter(None, [Genre.name_to_id(genre) for genre in genres])
     if genres:
@@ -96,7 +97,7 @@ def build_query(get):
         where.append('id in (' + ', '.join(article_ids) + ')')
 
     # labels
-    labels = get.getlist('label')
+    labels = filter(None, get.getlist('label'))
     if labels:
         article_ids = [str(row[0]) for row in Tags.objects.filter(id__in=labels).values_list('article__id')]
         where.append('id in (' + ','.join(article_ids) + ')')
@@ -106,7 +107,7 @@ def build_query(get):
     if year and year.isdigit():
         where.append('year >=%(year_from)s')
         placeholders['year_from'] = year
-                 
+
     year = get.get('year_to', '')
     if year and year.isdigit():
         where.append('year <=%(year_to)s')
@@ -152,7 +153,7 @@ def build_query(get):
         orderby = ''
     where.append('exclude_from_search=0')
     where = ' AND '.join(filter(None, where))
-    
+
     sql = 'select * from blog where ' + where + orderby
     return sql, placeholders
 
@@ -173,8 +174,3 @@ def build_query(get):
     #         num = num + count(mailbags)
     #     }
     # }
-
-
-
-
-
