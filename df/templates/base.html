@@ -49,9 +49,9 @@
     {% if og_image %}
 	<link rel="image_src" href="{{ MEDIA_URL }}{{ og_image }}">
     {% else %}
-    
+
     {% endif %}
-	
+
 
 	<!-- Nav -->
 	<link rel="canonical" href="http://decentfilms.com{{request.path}}">
@@ -79,8 +79,8 @@
     else { document.getElementById(d).style.display = "none"; }
     }
     //--></script>
-    
-	
+
+
 </head>
 
 <body class="{% block body_class %}home{% endblock %}">
@@ -97,7 +97,7 @@
 				<a href="/articles" class="{% here request.path "/articles" %}">Articles</a>
 				<a href="/blog" class="{% here request.path "/blog" %}">Blog</a>
 				<a href="/mail" class="{% here request.path "/mail" %}">Mail</a>
-                <a href="/about" class="{% here request.path "/about" %} about">About</a>                
+                <a href="/about" class="{% here request.path "/about" %} about">About</a>
 				<a href="/search" class="{% here request.path "/search" %}">Search Page</a>
 				</div>
 			</page-nav>
@@ -110,10 +110,10 @@
 					</div>
 				</form>
 			</page-search>
-	
+
 		</header-content>
 	</header-wrapper>
-	
+
 	<!-- BEGIN primary content area, including footer -->
 	<page-body-wrapper>
         {% block banner %}<a class="logo-banner" href="/"></a>{% endblock %}
@@ -124,16 +124,16 @@
 				<column-main role="main">
                   {% block main %}{% endblock %}
 				</column-main>
-			
+
 				<sidebar-column role="complementary">
                   {% block sidebar %}
-                  {% load sidebar_tags %}                  
+                  {% load sidebar_tags %}
                     {% sidebar %}
                   {% endblock %}
 				</sidebar-column>
-			
+
 			</columns-all>
-	
+
 			<page-footer role="contentinfo">
 
 				<page-nav role="navigation">
@@ -147,33 +147,33 @@
 					<a href="/search" class="{% here request.path '/search' %}">Search Page</a>
 					<a href="/about" class="{% here request.path '/about' %}">About</a>
 					<a href="/contact" class="{% here request.path '/contact' %}">Contact</a>
-					
+
                  {% include "social.html" %}
 
 				</page-nav>
 
 				<p class="copyright">Copyright &copy; 2000&#8211;<script>document.write(new Date().getFullYear())</script> Steven D. Greydanus. All rights reserved.</p>
 
-			</page-footer>		
-			
+			</page-footer>
+
 		</page-content>
-	
+
 	</page-body-wrapper>
-    
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="/static/_theme/js/third-party/fluidvids.min.js"></script>
 	<script src="/static/_theme/js/third-party/jquery.tooltipster.min.js"></script>
 	<script src="/static/_theme/js/site.js"></script>
-    <script> 
-     var $buoop = {c:2}; 
-     function $buo_f(){ 
-      var e = document.createElement("script"); 
-      e.src = "//browser-update.org/update.js"; 
+    <script>
+     var $buoop = {c:2};
+     function $buo_f(){
+      var e = document.createElement("script");
+      e.src = "//browser-update.org/update.js";
       document.body.appendChild(e);
      };
      try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
      catch(e){window.attachEvent("onload", $buo_f)}
-    </script> 
+    </script>
     {% block endscript %}
     {% endblock %}
 
@@ -186,7 +186,7 @@
   ga('create', 'UA-60349480-1', 'auto');
   ga('send', 'pageview');
 
-</script>    
+</script>
 </body>
 
 </html>
