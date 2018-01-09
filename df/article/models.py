@@ -209,9 +209,13 @@ class Article(models.Model):
         if getattr(self, '_link', None):
             return self._link
         link = self.source
-        if link.expires and datetime.datetime.now() < link.expires:
-            self._link = link
-            return link
+        try:
+            if link.expires and datetime.datetime.now() < link.expires:
+                self._link = link
+                return link
+        except AttributeError:
+            return None
+
 
     @property
     def source(self):
@@ -281,4 +285,4 @@ class Article(models.Model):
 
     def get_admin_url(self):
         return reverse("admin:%s_%s_change" %
-                       (self._meta.app_label, self._meta.module_name), args=(self.id,))
+                       (self._meta.app_label, self._meta.model_name), args=(self.id,))

@@ -29,7 +29,7 @@ class MailBag(models.Model):
 
     def get_admin_url(self):
         return reverse("admin:%s_%s_change" %
-                       (self._meta.app_label, self._meta.module_name), args=(self.id,))
+                       (self._meta.app_label, self._meta.model_name), args=(self.id,))
 
     def __unicode__(self):
         if(self.title):

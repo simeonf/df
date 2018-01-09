@@ -11,6 +11,8 @@ class ArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
+        exclude = []
+
 
 class LinkAdmin(admin.TabularInline):
     model = Link
