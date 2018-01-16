@@ -1,5 +1,6 @@
 from django.contrib import admin
 from article.models import Article, Tags, Genre, Link, Image
+from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.db import models
 from django import forms
 
@@ -20,9 +21,33 @@ class LinkAdmin(admin.TabularInline):
 class ImageAdmin(admin.TabularInline):
     model = Image
 
+article_widget = FilteredSelectMultiple("Article", False, attrs={'rows':'2'})
+
+class ArticleM2MForm(forms.ModelForm):
+    article = forms.ModelMultipleChoiceField(Article.objects.all(),
+                                             required=False,
+                                             widget=article_widget)
+    def __init__(self, *args, **kwargs):
+        instance = kwargs.get('instance')
+        if instance:
+            initial = kwargs.get('initial', {})
+            initial['article'] = instance.articles.all()
+            kwargs['initial'] = initial
+        super(ArticleM2MForm, self).__init__(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        a, b = set(self.instance.articles.all()), set(self.cleaned_data['article'])
+        new = b - a
+        for article in new:
+            self.instance.articles.add(article)
+        removed = a - b
+        for article in removed:
+            self.instance.articles.remove(article)
+        return super(ArticleM2MForm, self).save(*args, **kwargs)
+
 class GenreAdmin(admin.ModelAdmin):
-    filter_horizontal = ('articles',)
     model = Genre
+    form = ArticleM2MForm
 
 class ArticleAdmin(admin.ModelAdmin):
     date_hierarchy = 'dt'
@@ -56,8 +81,8 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    filter_horizontal = ('articles',)
-    list_display = ('title', 'related_articles')
+    model = Tags
+    form = ArticleM2MForm
 
 admin.site.register(Tags, TagAdmin)
 admin.site.register(Genre, GenreAdmin)
