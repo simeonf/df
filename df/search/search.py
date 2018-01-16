@@ -89,7 +89,6 @@ def build_query(get):
 
     # genre query. some manual queries "?genre=action&genre2=adventure" to account for
     # i'm fetching all article ids and issuing an id in [...] query cause that's how php did it.
-    import pdb;pdb.set_trace()
     genres = get.getlist('genre') + [get.get('genre2')]
     genres = filter(None, [Genre.name_to_id(genre) for genre in genres])
     if genres:
