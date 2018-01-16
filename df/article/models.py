@@ -57,7 +57,6 @@ class Genre(models.Model):
     class Meta:
         db_table = 'article_genre'
     title = models.CharField(max_length=128)
-    articles = models.ManyToManyField("Article", related_name='article_set')
 
     @classmethod
     def name_to_id(cls, genre):
@@ -79,7 +78,6 @@ class Tags(models.Model):
     class Meta:
         db_table = 'article_tags'
     title = models.CharField(max_length=128)
-    articles = models.ManyToManyField('Article', related_name="labeled")
 
     class Meta:
         verbose_name_plural = "tags"
@@ -155,8 +153,8 @@ class Article(models.Model):
     display = models.BooleanField(help_text='Show or hide entry from list views.', default=False)
     exclude_from_search = models.BooleanField(help_text='Excluded this article from the search page.', default=False)
     product_notes = models.TextField(blank=True)
-    genre = models.ManyToManyField(Genre, through=Genre.articles.through, blank=True)
-    labels = models.ManyToManyField(Tags, through=Tags.articles.through, blank=True)
+    genre = models.ManyToManyField(Genre, related_name='articles', blank=True, db_table='article_genre_articles')
+    labels = models.ManyToManyField(Tags, related_name='articles', blank=True, db_table='article_tags_articles')
 
     stars = models.CharField(max_length=2, choices=STAR_CHOICES, blank=True, null=True)
     overall = models.CharField(max_length=2, choices=OVERALL_CHOICES, blank=True, null=True)
