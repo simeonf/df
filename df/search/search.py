@@ -92,13 +92,13 @@ def build_query(get):
     genres = get.getlist('genre') + [get.get('genre2')]
     genres = filter(None, [Genre.name_to_id(genre) for genre in genres])
     if genres:
-        article_ids = [str(row[0]) for row in Genre.objects.filter(id__in=genres).values_list('article__id')]
+        article_ids = [str(row[0]) for row in Genre.objects.filter(id__in=genres).values_list('articles__id')]
         where.append('id in (' + ', '.join(article_ids) + ')')
 
     # labels
     labels = filter(None, get.getlist('label'))
     if labels:
-        article_ids = [str(row[0]) for row in Tags.objects.filter(id__in=labels).values_list('article__id')]
+        article_ids = [str(row[0]) for row in Tags.objects.filter(id__in=labels).values_list('articles__id')]
         where.append('id in (' + ','.join(article_ids) + ')')
 
     # year tags
