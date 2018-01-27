@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 import md5
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -120,14 +121,32 @@ DATABASES = {
         'STORAGE_ENGINE': 'InnoDB',
         'NAME': 'df',
         'USER': 'df',
+        'TEST': {
+        },
         'PASSWORD': os.environ['DF_DB_PASSWORD'],
         'HOST': '',
         'PORT': '',
         'OPTIONS': {
           "init_command": "SET storage_engine=INNODB",
-        }
+        },
     }
 }
+
+# Use sqlite3 and skip migrations when running tests
+class DisableMigrations(object):
+    def __contains__(self, item):
+        return True
+
+    def __getitem__(self, item):
+        return None
+
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default']['NAME'] = ''
+    DATABASES['default']['OPTIONS'] = {}
+
+    MIGRATION_MODULES = DisableMigrations()
+
 
 LANGUAGE_CODE = 'en-us'
 
