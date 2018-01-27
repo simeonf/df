@@ -1,0 +1,67 @@
+{% extends "query_replace/base.html" %}
+{% load i18n admin_urls %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> &rsaquo;
+<a href="{% url 'admin:app_list' app_label='query_replace' %}">{% trans 'Query/Replace' %}</a>
+&rsaquo; {{ model }}.{{ field }} Search
+</div>
+{% endblock %}
+{% endif %}
+
+{% block content %}
+<div id="content-main">
+<form action="" method="POST" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
+<div>
+{% if errors %}
+    <p class="errornote">
+    {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+    </p>
+    {{ adminform.form.non_field_errors }}
+{% endif %}
+{% if not search %}
+    {{form.errors }}
+    <div class="aligned">
+        <div class="form-row">
+          {{ form.search.label_tag }}
+          {{ form.search }}
+          {{ form.search.errors }}
+
+        </div>
+        <div class="form-row">
+          {{ form.replace.label_tag }}
+          {{ form.replace }}
+          {{ form.replace.errors }}
+        </div>
+        <div class="form-row">
+          <input name="next" type="submit" value="Start">
+        </div>
+    </div>
+{% else %}
+    <h1>Search and Replace</h1>
+    {% if search.diff %}
+    <h2>{{ search.total }} matches found{% if search.skipped %} (processed {{ search.skipped }}){% endif %}</h2>
+    <div id="diff"></div>
+    <script type="text/javascript">
+      var diff = {{ search.json|safe }};
+      var diff2htmlUi = new Diff2HtmlUI({diff: diff.raw});
+      diff2htmlUi.draw("#diff", {inputFormat: 'diff', showFiles: false, matching: 'lines'});
+      diff2htmlUi.highlightCode("#diff");
+    </script>
+    <div class="form-row">
+          <input name="next" type="submit" value="Skip">
+          <input name="next" type="submit" value="Replace">
+    </div>
+    <div style="display:none;">{{ form.search }} {{ form.replace }} {{ form.current_pk }} {{ form.skip }}</div>
+
+
+    {% else %}
+      No more matches found. <a href="">Try again</a>?
+    {% endif %}
+{% endif %}
+</div>
+</form>
+
+{% endblock %}
