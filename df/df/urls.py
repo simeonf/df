@@ -4,7 +4,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from article.feed import ArticlesFeed
 
-import debug_toolbar
 import sidebar.views
 import search.views
 
@@ -21,6 +20,7 @@ urlpatterns = [
 
 
 if settings.DEBUG:
+    import debug_toolbar
     urlpatterns.extend([
         url(r'^__debug__/', include(debug_toolbar.urls)),
     ])
