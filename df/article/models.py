@@ -197,8 +197,8 @@ class Article(models.Model):
     def related_tags(self):
         if getattr(self, '_related_tags', None):
             return self._related_tags
-        tags = Tags.objects.filter(article=self)
-        genres = Genre.objects.filter(article=self)
+        tags = Tags.objects.filter(articles=self)
+        genres = Genre.objects.filter(articles=self)
         self._related_tags = sorted(chain(tags, genres), key=lambda x: x.title)
         return self._related_tags
 
