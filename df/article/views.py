@@ -83,8 +83,8 @@ def recent(request):
 def tags_index(request):
     def title(obj):
         return obj.title
-    qs1 = Tags.objects.all().annotate(num=Count('article')).order_by('title')
-    qs2 = Genre.objects.all().annotate(num=Count('article')).order_by('title')
+    qs1 = Tags.objects.all().annotate(num=Count('articles')).order_by('title')
+    qs2 = Genre.objects.all().annotate(num=Count('articles')).order_by('title')
     return render(request, 'article/tags.html', {'tags': sorted(chain(qs1, qs2), key=title),
                                                  'title': 'Tags Page',
                                                  'blurb': 'Content grouped by tag and genre'})
