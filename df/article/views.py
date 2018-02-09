@@ -16,7 +16,7 @@ PER_PAGE = 25
 
 def debug(request):
   return render(request, "article/debug.html")
-  
+
 @cache_page(60)
 def article_index(request):
     paginator = Paginator(Article.articles.all().order_by("-dt"), 20)
@@ -44,7 +44,7 @@ def article(request, slug, type):
         return HttpResponsePermanentRedirect(url)
     else:
         article = get_object_or_404(Article, Q(filename=slug) | Q(filename=slug + ".html"), category=type)
-        
+
         return render(request, "article/article.html", {'article': article,
                                                         'title': article.title,
                                                         'blurb': article.blurb,
@@ -66,7 +66,7 @@ def index(request):
                                           'title': ""
                                         })
 
-@cache_page(60)    
+@cache_page(60)
 def recent(request):
     """
     Recent page - all the things.
@@ -78,8 +78,8 @@ def recent(request):
     return render(request, "article/archive.html", {'articles': page(request, paginator),
                                                     'title': 'Recent',
                                                     'blurb': 'Recently added content'})
-                                          
-@cache_page(180)    
+
+@cache_page(180)
 def tags_index(request):
     def title(obj):
         return obj.title
@@ -95,7 +95,6 @@ def tag(request, slug):
         tag = Genre.objects.filter(title=slug).first()
     if not tag:
         raise Http404
-    return render(request, 'article/tag.html', {'tag': tag, 'articles': tag.article_set.all(),
+    return render(request, 'article/tag.html', {'tag': tag, 'articles': tag.articles.all(),
                                                 'title': 'Tags :: %s' % tag.title,
                                                 'blurb': 'Articles for %s' % tag.title})
-  
