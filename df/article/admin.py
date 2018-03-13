@@ -36,14 +36,17 @@ class ArticleM2MForm(forms.ModelForm):
         super(ArticleM2MForm, self).__init__(*args, **kwargs)
 
     def save(self, *args, **kwargs):
-        a, b = set(self.instance.articles.all()), set(self.cleaned_data['article'])
-        new = b - a
-        for article in new:
-            self.instance.articles.add(article)
-        removed = a - b
-        for article in removed:
-            self.instance.articles.remove(article)
-        return super(ArticleM2MForm, self).save(*args, **kwargs)
+        value = super(ArticleM2MForm, self).save(*args, **kwargs)
+        if kwargs.get('commit') is not False:
+            a, b = set(self.instance.articles.all()), set(self.cleaned_data['article'])
+            new = b - a
+            for article in new:
+                self.instance.articles.add(article)
+            removed = a - b
+            for article in removed:
+                self.instance.articles.remove(article)
+        return value
+
 
 class GenreAdmin(admin.ModelAdmin):
     model = Genre
