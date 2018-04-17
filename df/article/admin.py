@@ -37,14 +37,18 @@ class ArticleM2MForm(forms.ModelForm):
 
     def save(self, *args, **kwargs):
         value = super(ArticleM2MForm, self).save(*args, **kwargs)
-        if kwargs.get('commit') is not False:
-            a, b = set(self.instance.articles.all()), set(self.cleaned_data['article'])
-            new = b - a
-            for article in new:
-                self.instance.articles.add(article)
-            removed = a - b
-            for article in removed:
-                self.instance.articles.remove(article)
+        if not self.instance.id:
+          try:
+            self.instance.save()
+          except Exception:
+            return value
+        a, b = set(self.instance.articles.all()), set(self.cleaned_data['article'])
+        new = b - a
+        for article in new:
+            self.instance.articles.add(article)
+        removed = a - b
+        for article in removed:
+            self.instance.articles.remove(article)
         return value
 
 
