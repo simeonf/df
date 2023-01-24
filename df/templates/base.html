@@ -18,9 +18,9 @@
 	<!-- Open Graph meta -->
 	<meta property="og:site_name" content="Decent Films">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="http://decentfilms.com{{ request.path  }}">
+	<meta property="og:url" content="https://decentfilms.com{{ request.path  }}">
     {% if og_image %}
-	<meta property="og:image" content="http://{{site}}{{ MEDIA_URL }}{{ og_image }}">
+	<meta property="og:image" content="https://{{site}}{{ MEDIA_URL }}{{ og_image }}">
     {% endif %}
 	<meta property="og:title" content="{% if title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | {% endif %}Decent Films - SDG Reviews">
     {% if blurb %}
@@ -33,7 +33,7 @@
 	<!-- Twitter meta -->
 	<meta name="twitter:card" content="{% if og_image %}summary_large_image{% else %}summary{% endif %}">
 	<meta name="twitter:creator:id" content="@decentfilms">
-	<meta name="twitter:url" content="http://decentfilms.com{{ request.path }}">
+	<meta name="twitter:url" content="https://decentfilms.com{{ request.path }}">
 	<meta name="twitter:title" content="{% if title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %} | {% endif %}Decent Films - SDG Reviews">
     {% if blurb %}
       <meta name="twitter:description" content="{{ blurb|striptags|safe }}">
@@ -41,7 +41,7 @@
 	  <meta name="twitter:description" content="Film appreciation and criticism informed by Christian faith">
     {% endif %}
     {% if og_image %}
-	<meta name="twitter:image" content="http://{{site}}{{ MEDIA_URL }}{{ og_image }}">
+	<meta name="twitter:image" content="https://{{site}}{{ MEDIA_URL }}{{ og_image }}">
     {% endif %}
 	<title>{% block title %}{% if title %}{{ title|striptags|safe }}{% if article.year %} ({{ article.year }}){% endif %}{% endif %}{% endblock %}{% if title %} - Decent Films{% else %}Decent Films - SDG Reviews{% endif %}</title>
 
@@ -54,7 +54,7 @@
 
 
 	<!-- Nav -->
-	<link rel="canonical" href="http://decentfilms.com{{request.path}}">
+	<link rel="canonical" href="https://decentfilms.com{{request.path}}">
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
