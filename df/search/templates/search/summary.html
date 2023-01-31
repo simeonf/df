@@ -2,7 +2,7 @@
 <a href="{{ object.get_absolute_url }}" {% if object.masthead %}class="has-masthead"><img alt="{{ object.title }}" src="{{ MEDIA_URL }}{{ object.masthead }}"{% endif %}>
 <summary>
 	<article-type>
-	  {{ object.category }} {{ result.score }}
+	  {{ object.category }}
 	</article-type>
 	  <h4>{{ object.title|safe }} {% if object.year %}({{ object.year }}){% endif %}</h4>
       <p>{{ object.blurb|strip_anchor|safe }}</p>
