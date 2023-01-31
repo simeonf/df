@@ -14,3 +14,16 @@ CACHES = {
         'LOCATION': 'unique-snowflake'
     }
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'STORAGE_ENGINE': 'InnoDB',
+        'NAME': 'df',
+        'USER': 'df',
+        'TEST': {},
+        'PASSWORD': os.environ['DF_DB_PASSWORD'],
+        'HOST': '',
+        'PORT': '',
+    }
+}
