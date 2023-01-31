@@ -1,0 +1,5 @@
+{{ object.title }}
+
+{{ object.sub_title }}
+
+{{ object.alttitle }}

@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     'search',
     'oldsite',
     'query_replace',
+    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -173,4 +174,12 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         'LOCATION': 'unique-snowflake'
     }
+}
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
 }
