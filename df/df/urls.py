@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^now-playing$', sidebar.views.theater),
     url(r'^sections/', include('oldsite.urls')),
     url(r'^search$', search.views.search),
+    url(r'^search2$', search.views.search2),
     url(r'^mail', include('mailbag.urls')),
 ]
 

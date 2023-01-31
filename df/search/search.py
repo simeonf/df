@@ -3,8 +3,9 @@ should use q where possible but sticking with .raw() for now"""
 
 from MySQLdb import escape_string as esc
 
-from article.models import Genre, Tags
+from article.models import Article, Genre, Tags
 
+from haystack.query import SearchQuerySet, SQ
 
 class Ratings(object):
     overall = ['A+','A','A-', 'B+','B','B-','C+','C','C-','D+','D','D-','F',]
@@ -20,7 +21,7 @@ class Ratings(object):
         """
         given some values and some tagnames generate the
         sql to find the tags.
-        >>> locate(['overall'], ['A', 'B'])
+        >>> Ratings.locate(['overall'], ['A', 'B'])
         "(overall='A' or overall='B')"
 
         """
@@ -33,6 +34,31 @@ class Ratings(object):
         if "or" in join:
             sql = "({})".format(sql)
         return sql
+
+    @classmethod
+    def values(cls, field, value, modifier):
+        """Return all matching values for give field and modifier.
+
+        >>> Ratings.values("overall", "A", ">=")
+        ['A+', 'A']
+        >>> Ratings.values("overall", "B", "=")
+        ['B']
+        """
+        # shortcut the == case
+        if modifier == "=":
+            return [value]
+        values = getattr(cls, field)
+        try:
+            index = values.index(value)
+        except ValueError:
+            return None
+        if modifier == '>=':
+            values_used = values[:index +1]
+        elif modifier == '<=':
+            values_used = values[index:]
+        else:
+            values_used = []
+        return values_used
 
     @classmethod
     def sql(cls, tagnames, value, modifier):
@@ -156,20 +182,77 @@ def build_query(get):
     sql = 'select * from blog where ' + where + orderby
     return sql, placeholders
 
-    # if((get['title']))
-    # {
-    #     sql = "select mailbag_mailbagentry.*, mailbag_mailbag.slug,
-    #                               mailbag_mailbag.title as mtitle
-    #                                  from mailbag_mailbag
-    #                                    inner join mailbag_mailbagentry
-    #                                    on mailbag_mailbag.id=mailbag_mailbagentry.mail_bag_id
-    #                                    where search=1 and mailbag_mailbagentry.display=1
-    #                                    and mailbag_mailbagentry.title like ?
-    #                                    order by mailbag_mailbag.dt desc"
-    #     mailbags = this->db->getAll(sql, array('%' . get['title'] . '%'))
-    #     if(count(mailbags))
-    #     {
-    #         obj->records = array_merge(obj->records, mailbags)
-    #         num = num + count(mailbags)
-    #     }
-    # }
+
+class FakeResult(object):
+    def __init__(self, obj):
+        self.object = obj
+
+def f_letter_records(letter):
+    where = " WHERE %(fletter)s=LEFT(search_title, 1) and exclude_from_search=0"
+    orderby = " ORDER BY search_title ASC"
+    sql = 'SELECT * FROM blog ' + where + orderby
+    values = dict(fletter=letter)
+    hits = list([FakeResult(obj) for obj in Article.objects.raw(sql, values)])
+    return hits
+
+def build_query2(get):
+    """For specific queries like first letter, ratings, or year queries talk to the
+    database. If further searching is necessary, fetch a list of ids and limit search to
+    this sublist.
+
+    For all other queries defer searching to haystack.
+
+    """
+
+    # Handle fletter queries with early return
+    if get.get('fletter'):
+        letter = get['fletter']
+        return f_letter_records(letter)
+
+    sqs = SearchQuerySet()
+    # Is there a search term in title, keyword, or cast?
+    if get.get('title'):
+        term = get.get('title')
+        sqs = sqs.filter(title=term)
+
+    if get.get('cast'):
+        sqs = sqs.filter(cast=get.get('cast'))
+
+    if get.get('keywords'):
+        term = get.get('keywords')
+        sqs = sqs.filter(SQ(text=term) | SQ(title=term))
+
+    genres = get.getlist('genre')
+    # Map manual queries like genre=action to genre=45
+    genres = filter(None, [Genre.name_to_id(genre) for genre in genres])
+    if genres:
+        sqs = sqs.filter(genre__in=genres)
+
+    labels = filter(None, get.getlist('label'))
+    if labels:
+        sqs = sqs.filter(labels__in=labels)
+
+    year = get.get('year_from', '')
+    if year and year.isdigit():
+        sqs = sqs.filter(year__gte=year)
+
+    year = get.get('year_to', '')
+    if year and year.isdigit():
+        sqs = sqs.filter(year__lte=year)
+
+
+    ratings = dict(overall=['overall'],
+                   artistic=['stars'],
+                   moral=['moral', 'spiritual'],
+                   age=['age'],
+                   mpaa=['mpaa'],
+                   usccb=['usccb']
+               )
+    for field, tagnames in ratings.items():
+        value = get.get(field)
+        if value:
+            modifier = get.get('%s_modifier' % field, '=')
+            values = Ratings.values(tagnames[0], value, modifier)
+            key = '%s__in' % field
+            sqs = sqs.filter(**{key: values})
+    return sqs
