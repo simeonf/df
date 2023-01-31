@@ -4,6 +4,8 @@ import re
 from django.db import models
 from django.core.urlresolvers import reverse
 
+import utility
+
 CATEGORY_CHOICES = (('ARTICLE', "Article"), ('REVIEW', "Review"), ('POST', "Blog Post"))
 STAR_CHOICES = [('40', '4 Stars'),
                 ('35', '3.5'),
@@ -66,6 +68,8 @@ class Genre(models.Model):
         if not genre:
             return None
         if not genre.isdigit():
+            if genre.startswith('genre'):  # Old links like genre=genreaction
+                genre = genre[len('genre'):]
             return getattr(cls.objects.filter(title=genre).first(), 'id', None)
         else:
             return genre
@@ -120,6 +124,7 @@ class BlogManager(models.Manager):
 
 class Article(models.Model):
     title = models.CharField(max_length=765)
+    search_title = models.CharField(max_length=765, blank=True, null=True)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     see_also = models.CharField(max_length=765, blank=True, null=True)
     amazon = models.TextField(blank=True, null=True)
@@ -279,6 +284,7 @@ class Article(models.Model):
         # Go ahead and add a genre record if necessary
         if not self.dt_modified:
             self.dt_modified = self.dt
+        self.search_title = utility.make_sortable(self.title)
         super(Article, self).save(force_insert, force_update, **kwargs)
 
     def get_admin_url(self):

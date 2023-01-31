@@ -1,5 +1,30 @@
+import re
 from collections import namedtuple
 from django.core.paginator import EmptyPage, PageNotAnInteger
+
+ENTITY_PAT = re.compile("&[^;]+;")
+TAG_PAT = re.compile("<[^>]+>")
+STRIP_LIST = ["a ", "an ", "the "] # "<em>", "<i>"
+
+
+def make_sortable(orig):
+    orig = orig.lower()
+    # deal with leading html entities
+    if orig[0] == "&":
+        orig = ENTITY_PAT.sub("", orig)
+    # deal with leading simple tags
+    if orig[0] == "<":
+        orig = TAG_PAT.sub("", orig)
+    # Deal with unicode quotes, ', ", etc
+    if not orig[0].isalnum():
+        orig = orig[1:]
+    for item in STRIP_LIST:
+        if orig.startswith(item):
+            orig = orig[len(item):]
+            break
+    return orig
+
+
 
 def page(request, paginator):
     page = request.GET.get('page')
@@ -50,7 +75,3 @@ def sorta(streams, key=None, total=None, order=min):
       # Don't go too far
       if total is not None and num >= total:
           return
-  
-  
-  
-  
