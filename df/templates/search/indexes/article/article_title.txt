@@ -1,5 +1,5 @@
-{{ object.title }}
+{{ object.title }} {{ object.year }}
 
-{{ object.sub_title }}
+{{ object.subtitle }}
 
 {{ object.alttitle }}
