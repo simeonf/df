@@ -43,6 +43,7 @@
     <h1>Search and Replace</h1>
     {% if search.diff %}
     <h2>{{ search.total }} matches found{% if search.skipped %} (processed {{ search.skipped }}){% endif %}</h2>
+    <h3>Edit: <a target="_blank" href="{{ search.instance.get_absolute_url }}">{{ search.instance }}</a></h3>
     <div id="diff"></div>
     <script type="text/javascript">
       var diff = {{ search.json|safe }};
