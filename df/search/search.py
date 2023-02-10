@@ -196,11 +196,9 @@ def f_letter_records(letter):
     return hits
 
 def build_query2(get):
-    """For specific queries like first letter, ratings, or year queries talk to the
-    database. If further searching is necessary, fetch a list of ids and limit search to
-    this sublist.
+    """For some specific queries like first letter talk to the database.
 
-    For all other queries defer searching to haystack.
+    For all other queries defer searching to haystack search api.
 
     """
 
@@ -213,14 +211,14 @@ def build_query2(get):
     # Is there a search term in title, keyword, or cast?
     if get.get('title'):
         term = get.get('title')
-        sqs = sqs.filter(title=term)
+        sqs = sqs.filter(SQ(title=term) | SQ(title_auto=term))
 
     if get.get('cast'):
         sqs = sqs.filter(cast=get.get('cast'))
 
     if get.get('keywords'):
         term = get.get('keywords')
-        sqs = sqs.filter(SQ(text=term) | SQ(title=term))
+        sqs = sqs.filter(SQ(text=term) | SQ(title=term) | SQ(text_auto=term))
 
     genres = get.getlist('genre')
     # Map manual queries like genre=action to genre=45

@@ -1,0 +1,7 @@
+{{ object.blurb }}
+
+{{ object.entry }}
+
+{{ object.lead_content }}
+
+{{ object.below_the_fold }}
