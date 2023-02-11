@@ -3,3 +3,5 @@
 {{ object.subtitle }}
 
 {{ object.alttitle }}
+
+{{ object.cast }}

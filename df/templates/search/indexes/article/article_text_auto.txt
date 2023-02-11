@@ -1,5 +1,7 @@
 {{ object.blurb }}
 
+{{ object.cast }}
+
 {{ object.entry }}
 
 {{ object.lead_content }}

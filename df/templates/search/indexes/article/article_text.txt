@@ -1,5 +1,7 @@
 {{ object.year }}
 
+{{ object.cast }}
+
 {{ object.blurb }}
 
 {{ object.entry }}
