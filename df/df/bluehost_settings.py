@@ -8,6 +8,13 @@ STATIC_ROOT = '/home/stevendg/www/static_new'
 
 ALLOWED_HOSTS = ['.decentfilms.com', 'localhost']
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp/django_cache',
+    }
+}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
