@@ -17,27 +17,27 @@ PER_PAGE = 25
 def debug(request):
   return render(request, "article/debug.html")
 
-@cache_page(60)
+@cache_page(180)
 def article_index(request):
     paginator = Paginator(Article.articles.all().order_by("-dt"), 20)
     return render(request, "article/archive.html", {'articles': page(request, paginator),
                                                     'blurb': "Articles index",
                                                     'title': 'Articles'})
 
-@cache_page(60)
+@cache_page(180)
 def blog_index(request):
     paginator = Paginator(Article.posts.all().order_by("-dt"), 20)
     return render(request, "article/archive.html", {'articles': page(request, paginator),
                                                     'blurb': "Blog index",
                                                     'title': 'Blog'})
 
-@cache_page(60)
+@cache_page(180)
 def review_index(request):
     paginator = Paginator(Article.reviews.all().order_by("-dt"), 20)
     return render(request, "article/archive.html", {'articles': page(request, paginator),
                                                     'blurb': "Reviews index",
                                                     'title': 'Reviews'})
-@cache_page(20)
+@cache_page(180)
 def article(request, slug, type):
     if slug.endswith(".html"):
         url = request.path.replace(".html", "")
@@ -51,7 +51,7 @@ def article(request, slug, type):
                                                         'og_image': article.masthead
                                                       })
 
-@cache_page(60)
+@cache_page(180)
 def index(request):
     """
     View for the front page /
@@ -66,7 +66,7 @@ def index(request):
                                           'title': ""
                                         })
 
-@cache_page(60)
+@cache_page(180)
 def recent(request):
     """
     Recent page - all the things.
