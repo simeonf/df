@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     'oldsite',
     'query_replace',
     'haystack',
+    'menu',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -2,6 +2,9 @@ from itertools import tee
 import datetime
 from django import template
 
+
+from menu.models import MenuItem
+
 register = template.Library()
 
 
@@ -16,4 +19,9 @@ def here(path, item):
         return "here"
     else:
       return ""
-    
+
+
+@register.inclusion_tag('menu.html')
+def display_menu():
+    items = MenuItem.objects.filter(display=True)
+    return dict(items=items)

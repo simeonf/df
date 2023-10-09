@@ -1,0 +1,7 @@
+{% load menu_tags %}
+ <a href="/" class="{% here request.path "/" %}">Decent Films</a>
+ <div>
+  {% for item in items %}
+    <a href="{{ item.url }}" class="{% here request.path item.url %}">{{ item.title}}</a>
+  {% endfor %}
+ </div>
