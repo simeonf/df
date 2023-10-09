@@ -13,31 +13,32 @@ from mailbag.models import MailBag
 
 PER_PAGE = 25
 
+day = 60 * 60 * 24
 
 def debug(request):
   return render(request, "article/debug.html")
 
-@cache_page(180)
+@cache_page(day * 1)
 def article_index(request):
     paginator = Paginator(Article.articles.all().order_by("-dt"), 20)
     return render(request, "article/archive.html", {'articles': page(request, paginator),
                                                     'blurb': "Articles index",
                                                     'title': 'Articles'})
 
-@cache_page(180)
+@cache_page(day * 1)
 def blog_index(request):
     paginator = Paginator(Article.posts.all().order_by("-dt"), 20)
     return render(request, "article/archive.html", {'articles': page(request, paginator),
                                                     'blurb': "Blog index",
                                                     'title': 'Blog'})
 
-@cache_page(180)
+@cache_page(day * 1)
 def review_index(request):
     paginator = Paginator(Article.reviews.all().order_by("-dt"), 20)
     return render(request, "article/archive.html", {'articles': page(request, paginator),
                                                     'blurb': "Reviews index",
                                                     'title': 'Reviews'})
-@cache_page(180)
+@cache_page(day * 1)
 def article(request, slug, type):
     if slug.endswith(".html"):
         url = request.path.replace(".html", "")
@@ -51,7 +52,7 @@ def article(request, slug, type):
                                                         'og_image': article.masthead
                                                       })
 
-@cache_page(180)
+@cache_page(day * 1)
 def index(request):
     """
     View for the front page /
@@ -66,7 +67,7 @@ def index(request):
                                           'title': ""
                                         })
 
-@cache_page(180)
+@cache_page(day * 1)
 def recent(request):
     """
     Recent page - all the things.
@@ -79,7 +80,7 @@ def recent(request):
                                                     'title': 'Recent',
                                                     'blurb': 'Recently added content'})
 
-@cache_page(180)
+@cache_page(day * 1)
 def tags_index(request):
     def title(obj):
         return obj.title
@@ -88,7 +89,7 @@ def tags_index(request):
     return render(request, 'article/tags.html', {'tags': sorted(chain(qs1, qs2), key=title),
                                                  'title': 'Tags Page',
                                                  'blurb': 'Content grouped by tag and genre'})
-@cache_page(180)
+@cache_page(day * 1)
 def tag(request, slug):
     tag = Tags.objects.filter(title=slug).first()
     if not tag:
