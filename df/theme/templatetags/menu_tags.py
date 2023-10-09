@@ -21,7 +21,7 @@ def here(path, item):
       return ""
 
 
-@register.inclusion_tag('menu.html')
-def display_menu():
+@register.inclusion_tag('menu.html', takes_context=True)
+def display_menu(context):
     items = MenuItem.objects.filter(display=True)
-    return dict(items=items)
+    return dict(items=items, request=context['request'])
