@@ -3,6 +3,7 @@ from article.models import Article, Tags, Genre, Link, Image
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.db import models
 from django import forms
+from django.core.cache import cache
 
 class ArticleForm(forms.ModelForm):
     tags = forms.CharField(max_length=255,
@@ -85,6 +86,10 @@ class ArticleAdmin(admin.ModelAdmin):
 
         }),
     )
+
+    def save_model(self, request, obj, form, change):
+        cache.clear()
+        super(ArticleAdmin, self).save_model(request, obj, form, change)
 
 
 class TagAdmin(admin.ModelAdmin):
