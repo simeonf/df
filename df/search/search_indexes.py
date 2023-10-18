@@ -61,4 +61,4 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(exclude_from_search=False, display=True)
+        return self.get_model().objects.filter(exclude_from_search=False, dt__isnull=False)
