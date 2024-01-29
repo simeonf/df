@@ -1,10 +1,23 @@
 import re
 from collections import namedtuple
 from django.core.paginator import EmptyPage, PageNotAnInteger
+from functools import wraps
+from django.views.decorators.cache import cache_page
 
 ENTITY_PAT = re.compile("&[^;]+;")
 TAG_PAT = re.compile("<[^>]+>")
 STRIP_LIST = ["a ", "an ", "the "] # "<em>", "<i>"
+
+
+def cache_page_for_guests(*cache_args, **cache_kwargs):
+    def inner_decorator(func):
+        @wraps(func)
+        def inner_function(request, *args, **kwargs):
+            if not request.user.is_authenticated():
+                return cache_page(*cache_args, **cache_kwargs)(func)(request, *args, **kwargs)
+            return func(request, *args, **kwargs)
+        return inner_function
+    return inner_decorator
 
 
 def make_sortable(orig):
