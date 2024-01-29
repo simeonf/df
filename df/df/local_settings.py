@@ -10,7 +10,7 @@ MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INTERNAL_IPS = ('127.0.0.1',)
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        'BACKEND': "django.core.cache.backends.locmem.LocMemCache",
         'LOCATION': 'unique-snowflake'
     }
 }
