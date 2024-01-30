@@ -4,9 +4,9 @@ from django.db.models import Q, Count
 from django.core.paginator import Paginator
 from django.http import HttpResponsePermanentRedirect, Http404
 from django.shortcuts import render, get_object_or_404
-from django.views.decorators.cache import cache_page
 
 from utility import page, sorta
+from utility import cache_page_for_guests as cache_page
 
 from .models import Article, Tags, Genre
 from mailbag.models import MailBag
@@ -17,6 +17,7 @@ day = 60 * 60 * 24
 
 def debug(request):
   return render(request, "article/debug.html")
+
 
 @cache_page(day * 1)
 def article_index(request):

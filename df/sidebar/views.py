@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.decorators.cache import cache_page
+from utility import cache_page_for_guests as cache_page
 
 from .models import SidebarEntry
 
@@ -10,4 +10,3 @@ def dvd(request):
 @cache_page(60)
 def theater(request):
     return render(request, "sidebar/theater.html", SidebarEntry.theater())
-    

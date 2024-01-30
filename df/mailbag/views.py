@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
-from django.views.decorators.cache import cache_page
+from utility import cache_page_for_guests as cache_page
 
 from .models import MailBag
 
@@ -28,4 +28,3 @@ def mailbag(request, slug):
     return render(request, "mailbag/mailbag.html", {'mailbag': mailbag,
                                                     'title': mailbag.title,
                                                     'blurb': mailbag.blurb})
-
