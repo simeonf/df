@@ -18,7 +18,7 @@ STAR_CHOICES = [('40', '4 Stars'),
                 ('00', '0')]
 OVERALL_CHOICES = zip(*tee(['A+', 'A', 'A-',  'B+', 'B', 'B-', 'C+',
                             'C', 'C-', 'D+', 'D', 'D-', 'F']))
-MORAL_CHOICES = zip(*tee(map(str, [4, 3, 2, 1, 0, -1, -2, -3, -4])))
+MORAL_CHOICES = list(zip(*tee(map(str, [4, 3, 2, 1, 0, -1, -2, -3, -4]))))
 AGE_CHOICES = [('K', 'Kids & Up'),
                ('K*', 'Kids & Up*'),
                ('T', 'Teens & Up'),

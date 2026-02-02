@@ -1,4 +1,4 @@
-from urllib import urlencode
+from urllib.parse import urlencode
 from django.conf import settings
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
@@ -51,7 +51,8 @@ def search2(request):
               data.pop('page')
             data = dict((k, v[0]) for k,v in data.items() if v[0])
             if settings.DEBUG:
-                print(connections['default'].queries)
+                pass
+                #print(connections['default'].queries)
             return render(request, "search/list2.html", {'hits': page(request, paginator),
                                                          'total': total,
                                                          'qs': "&" + urlencode(data)})

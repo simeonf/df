@@ -22,25 +22,25 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     usccb = indexes.MultiValueField()
 
     def prepare_overall(self, obj):
-        return filter(None, [obj.overall])
+        return list(filter(None, [obj.overall]))
 
     def prepare_stars(self, obj):
-        return filter(None, [obj.stars])
+        return list(filter(None, [obj.stars]))
 
     def prepare_moral(self, obj):
-        return filter(None, [obj.moral])
+        return list(filter(None, [obj.moral]))
 
     def prepare_spiritual(self, obj):
-        return filter(None, [obj.spiritual])
+        return list(filter(None, [obj.spiritual]))
 
     def prepare_age(self, obj):
-        return filter(None, [obj.age])
+        return list(filter(None, [obj.age]))
 
     def prepare_mpaa(self, obj):
-        return filter(None, [obj.mpaa])
+        return list(filter(None, [obj.mpaa]))
 
     def prepare_usccb(self, obj):
-        return filter(None, [obj.usccb])
+        return list(filter(None, [obj.usccb]))
 
     def prepare_year(self, obj):
         if obj.year and obj.year.isdigit():

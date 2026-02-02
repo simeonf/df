@@ -1,7 +1,8 @@
 """Translation of PHP search script to Python and Django. Probably
 should use q where possible but sticking with .raw() for now"""
 
-from MySQLdb import escape_string as esc
+#from MySQLdb import mysql_escape_string as esc
+from MySQLdb._mysql import escape_string as esc
 
 from article.models import Article, Genre, Tags
 
@@ -222,11 +223,11 @@ def build_query2(get):
 
     genres = get.getlist('genre')
     # Map manual queries like genre=action to genre=45
-    genres = filter(None, [Genre.name_to_id(genre) for genre in genres])
+    genres = list(filter(None, [Genre.name_to_id(genre) for genre in genres]))
     if genres:
         sqs = sqs.filter(genre__in=genres)
 
-    labels = filter(None, get.getlist('label'))
+    labels = list(filter(None, get.getlist('label')))
     if labels:
         sqs = sqs.filter(labels__in=labels)
 
