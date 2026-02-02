@@ -1,14 +1,11 @@
-"""
-WSGI config for df project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
-"""
-
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "df.settings")
 
 from django.core.wsgi import get_wsgi_application
+import dotenv
+
+path = os.path.dirname(os.path.dirname(__file__))
+dotenv.load_dotenv(os.path.join(path, '.env'))
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'df.prod_settings')
+
 application = get_wsgi_application()

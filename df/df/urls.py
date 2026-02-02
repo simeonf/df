@@ -8,7 +8,7 @@ import sidebar.views
 import search.views
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^rss$', ArticlesFeed()),
     url(r'^', include('article.urls')),
     url(r'^home-video$', sidebar.views.dvd),
@@ -20,7 +20,7 @@ urlpatterns = [
 ]
 
 
-if settings.DEBUG:
+if settings.DEBUG and False:
     import debug_toolbar
     urlpatterns.extend([
         url(r'^__debug__/', include(debug_toolbar.urls)),

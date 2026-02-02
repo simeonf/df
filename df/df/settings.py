@@ -11,16 +11,16 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys
-import md5
+import hashlib
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = md5.md5(os.environ['DF_DB_PASSWORD']).hexdigest()
+SECRET_KEY = hashlib.md5(os.environ['DF_DB_PASSWORD'].encode()).hexdigest()
 
 # SECURITY WARNING: don't run with debuge turned on in production!
 DEBUG = False
@@ -96,18 +96,19 @@ INSTALLED_APPS = (
     'menu',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'df.middleware.OldUrlsMiddleware',
+    'df.middleware.DjangoResponseMiddleware',
 )
 
 OLD_URLS = (('/dvd', '/home-video'), ('/theaters', '/now-playing'))
@@ -161,10 +162,6 @@ TIME_ZONE = 'UTC'
 
 #USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + "/static"
 
@@ -184,3 +181,7 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+
+HAYSTACK_ROUTERS = ['haystack.routers.DefaultRouter']
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
