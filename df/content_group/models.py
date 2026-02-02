@@ -8,8 +8,8 @@ class ContentGroup(models.Model):
     mailbag_entries = models.ManyToManyField(MailBagEntry, blank=True, null=True)
     articles = models.ManyToManyField(Article, blank=True, null=True)
 
-    def __unicode__(self):
-        return unicode(self.title)
+    def __str__(self):
+        return self.title
 
     @classmethod
     def get_all_related_to_article(cls, article):
