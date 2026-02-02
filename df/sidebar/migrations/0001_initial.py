@@ -31,8 +31,8 @@ class Migration(migrations.Migration):
                 ('dt', models.DateField(null=True, verbose_name=b'Date', blank=True)),
                 ('display', models.BooleanField(default=False)),
                 ('blurb', models.TextField(blank=True)),
-                ('article', models.ForeignKey(blank=True, to='article.Article', null=True)),
-                ('category', models.ForeignKey(to='sidebar.SidebarCategory')),
+                ('article', models.ForeignKey(blank=True, to='article.Article', null=True, on_delete=models.SET_NULL)),
+                ('category', models.ForeignKey(to='sidebar.SidebarCategory', on_delete=models.SET_NULL)),
             ],
             options={
                 'verbose_name_plural': 'Side bar entries',

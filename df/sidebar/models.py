@@ -10,8 +10,8 @@ SIDEBAR_CHOICES = (
 
 class SidebarCategory(models.Model):
     title = models.CharField(max_length=50)
-    side = models.CharField(max_length=50, choices=SIDEBAR_CHOICES)
-    def __unicode__(self):
+    side = models.CharField(max_length=50, choices=SIDEBAR_CHOICES, )
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -19,14 +19,14 @@ class SidebarCategory(models.Model):
     
     
 class SidebarEntry(models.Model):
-    category = models.ForeignKey(SidebarCategory)
+    category = models.ForeignKey(SidebarCategory, models.CASCADE)
     title = models.CharField(max_length=255)
     dt = models.DateField("Date", blank=True, null=True)
-    article = models.ForeignKey(Article, blank=True, null=True)
+    article = models.ForeignKey(Article, models.SET_NULL, blank=True, null=True,)
     display = models.BooleanField(default=False)
     blurb = models.TextField(blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     class Meta:
