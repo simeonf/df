@@ -1,7 +1,7 @@
 import datetime
 
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from article.models import Article
 
@@ -31,7 +31,7 @@ class MailBag(models.Model):
         return reverse("admin:%s_%s_change" %
                        (self._meta.app_label, self._meta.model_name), args=(self.id,))
 
-    def __unicode__(self):
+    def __str__(self):
         if(self.title):
             return unicode(self.title)
         return ''
@@ -39,9 +39,9 @@ class MailBag(models.Model):
 class MailBagEntry(models.Model):
     title = models.CharField(max_length=255, blank=True,
                              help_text="Optional. Leave blank if entry corresponds to particular movie.")
-    related_to = models.ForeignKey(Article, blank=True, null=True,
+    related_to = models.ForeignKey(Article, models.SET_NULL, blank=True, null=True,
                                    help_text="Select the article or Review this mailbag entry is related to")
-    mail_bag = models.ForeignKey(MailBag)
+    mail_bag = models.ForeignKey(MailBag, models.CASCADE)
     search_blurb = models.TextField(blank=True)
     search = models.BooleanField("enable search", default=False)
     quote = models.TextField()
@@ -57,10 +57,10 @@ class MailBagEntry(models.Model):
         url = "/mail/%s" % self.mail_bag.slug
         return "%s#entry-%s" % (url, self.id)
 
-    def __unicode__(self):
+    def __str__(self):
         if self.title:
-            return unicode(self.mail_bag.title + " :: " + self.title)
+            return self.mail_bag.title + " :: " + self.title
         elif self.related_to:
-            return unicode(self.mail_bag.title + " :: " + self.related_to.title)
+            return self.mail_bag.title + " :: " + self.related_to.title
         else:
             return self.mail_bag.title

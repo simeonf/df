@@ -37,8 +37,8 @@ class Migration(migrations.Migration):
                 ('entry', models.TextField(verbose_name=b'response', blank=True)),
                 ('below_the_fold', models.TextField(blank=True)),
                 ('display', models.BooleanField(default=False)),
-                ('mail_bag', models.ForeignKey(to='mailbag.MailBag')),
-                ('related_to', models.ForeignKey(blank=True, to='article.Article', help_text=b'Select the article or Review this mailbag entry is related to', null=True)),
+                ('mail_bag', models.ForeignKey(to='mailbag.MailBag', on_delete=models.CASCADE)),
+                ('related_to', models.ForeignKey(blank=True, to='article.Article', help_text=b'Select the article or Review this mailbag entry is related to', null=True, on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name_plural': 'Mail bag entries',
