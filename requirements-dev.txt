@@ -3,6 +3,6 @@ Faker==0.8.10
 python-dateutil==2.6.1
 ipaddress==1.0.19
 text-unidecode==1.1
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 pytz==2017.2
 django-test-without-migrations
