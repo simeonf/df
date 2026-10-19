@@ -98,6 +98,7 @@ class Tags(models.Model):
 
 class ArticleQuerySet(models.QuerySet):
     def datetimes(self, *args, **kwargs):
+        kwargs.pop("is_dst")
         x = super(ArticleQuerySet, self).dates(*args, **kwargs)
         return filter(None, x)
 
