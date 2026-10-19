@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('image', models.ImageField(upload_to=b'articles')),
                 ('attributes', models.CharField(max_length=255)),
-                ('article', models.ForeignKey(to='article.Article')),
+                ('article', models.ForeignKey(to='article.Article', on_delete=models.SET_NULL)),
             ],
             options={
             },
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('url', models.CharField(max_length=255)),
                 ('text', models.CharField(max_length=255)),
-                ('article', models.ForeignKey(to='article.Article')),
+                ('article', models.ForeignKey(to='article.Article', on_delete=models.SET_NULL)),
             ],
             options={
             },

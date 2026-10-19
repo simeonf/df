@@ -38,7 +38,7 @@ class Link(models.Model):
     url = models.CharField(max_length=255)
     text = models.CharField(max_length=255)
     expires = models.DateTimeField(null=True, blank=True, help_text=EXPIRE_HELP)
-    article = models.ForeignKey("Article")
+    article = models.ForeignKey("Article",  models.SET_NULL, blank=True, null=True)
 
     def __unicode__(self):
         return u"%s" % self.url
@@ -49,7 +49,7 @@ class Image(models.Model):
         db_table = 'article_image'
     image = models.CharField(max_length=768)
     attributes = models.CharField(max_length=255)
-    article = models.ForeignKey("Article")
+    article = models.ForeignKey("Article", models.SET_NULL, blank=True, null=True)
 
     def __unicode__(self):
         return u"%s" % self.image
