@@ -11,7 +11,7 @@ ALLOWED_HOSTS = ['.decentfilms.com', 'localhost']
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/tmp/django_cache',
+        'LOCATION': '/var/cache/django',
     }
 }
 
