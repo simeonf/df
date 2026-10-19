@@ -2,7 +2,7 @@ import datetime
 from itertools import tee, chain
 import re
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 import utility
 

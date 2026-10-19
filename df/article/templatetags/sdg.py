@@ -6,7 +6,7 @@ from content_group.models import ContentGroup
 
 register = template.Library()
 
-@register.assignment_tag
+@register.simple_tag
 def get_article_related(article):
     return ContentGroup.get_all_related_to_article(article)
 
