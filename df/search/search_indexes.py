@@ -4,7 +4,7 @@ from article.models import Article
 
 
 class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
-    id = indexes.IntegerField(model_attr='id')
+
     title = indexes.CharField(use_template=True, boost=1.2)
     title_auto = indexes.EdgeNgramField(use_template=True, boost=1.2)
     text = indexes.CharField(document=True, use_template=True)
