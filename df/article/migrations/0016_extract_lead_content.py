@@ -27,7 +27,7 @@ def parse_lead(*args):
             article.lead_content = "\n".join([_(el) for el in els])
             article.save()
         elif len(lead) > 1:
-            print article.id, article.title, len(lead)
+            print(article.id, article.title, len(lead))
 
 
 class Migration(migrations.Migration):

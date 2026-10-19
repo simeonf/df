@@ -36,7 +36,7 @@ iframe = CSSSelector("iframe")
 def get_iframe(tree):
   frames = list(iframe(tree))
   if len(frames) > 1:
-    print "Multiple iframes, ignoring"
+    print("Multiple iframes, ignoring")
     return ''
   if len(frames) == 1:
     html = _(frames[0])
@@ -157,7 +157,7 @@ def process_entry(entry, article):
   # same deal for amazon
   article.amazon = get_h4(body, "amazon.com")
   if len(article.amazon) > 500:
-    print article.amazon
+    print(article.amazon)
   # now remove empty div.assoc
   for div in assoc(body):
     if not div.getchildren():
@@ -216,7 +216,7 @@ def parse_new_fields(apps, schema_editor):
       article.save()
     except Exception as e:
       import pdb;pdb.set_trace()
-      print e
+      print(e)
             
 
 class Migration(migrations.Migration):

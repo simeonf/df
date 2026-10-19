@@ -40,7 +40,7 @@ class Link(models.Model):
     expires = models.DateTimeField(null=True, blank=True, help_text=EXPIRE_HELP)
     article = models.ForeignKey("Article",  models.SET_NULL, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % self.url
 
 
@@ -51,7 +51,7 @@ class Image(models.Model):
     attributes = models.CharField(max_length=255)
     article = models.ForeignKey("Article", models.SET_NULL, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % self.image
 
 
@@ -74,7 +74,7 @@ class Genre(models.Model):
         else:
             return genre
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % self.title
 
 
@@ -92,7 +92,7 @@ class Tags(models.Model):
     def get_absolute_url(self):
         return "/tags/%s" % self.title
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % self.title
 
 
@@ -264,7 +264,7 @@ class Article(models.Model):
             category += "s"
         return "/%s/%s" % (category, self.filename.replace(".html", ""))
 
-    def __unicode__(self):
+    def __str__(self):
         result = self.title
         if self.year:
             result = "%s (%s)" % (self.title, self.year)

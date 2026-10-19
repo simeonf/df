@@ -25,7 +25,7 @@ def remove_lead(*args):
             article.entry = _(body)
             article.save()
         elif len(lead) > 1:
-            print article.id, article.title, len(lead)
+            print(article.id, article.title, len(lead))
 
 
 class Migration(migrations.Migration):
