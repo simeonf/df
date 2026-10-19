@@ -14,7 +14,7 @@ def stars(num):
   return "*" * int(num[0]) + ("" if num[1] == '0' else "1/2")
 
 star_choices = empty_choice + [("{:02}".format(num), stars(num)) for num in range(40, -1, -5)]
-moral_choices = list(range(4, -5, -1))
+moral_choices = range(4, -5, -1)
 
 def add_plus(n):
   return "+%s" % n if n > 0 else str(n)
